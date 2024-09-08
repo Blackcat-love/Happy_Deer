@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="关于应用"
+        android:textSize="26sp"
+        android:textColor="#333333"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="作者: NANA"
+        android:textSize="18sp"
+        android:textColor="#666666"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="© 2024 NANA. 保留所有权利。"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/link_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开源项目: https://github.com/Blackcat-love/Happy_Deer"
+        android:autoLink="web"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/iwanttosay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="如果在使用过程中发现问题或者想要提出修改意见欢迎联系 blackact_19216811@163.com"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:clickable="true"
+        android:autoLink="email"
+        android:layout_marginTop="8dp"/>
+
+
+
+
+    <TextView
+        android:id="@+id/disclaimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="声明: 本应用仅供学习和研究用途，使用者需遵守适用法律法规。"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前版本: 1.0.0-alphal"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

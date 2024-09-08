@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-    <solid android:color="#FF6200EE"/> <!-- 按钮颜色 -->
-    <size android:width="100dp" android:height="100dp"/> <!-- 按钮大小 -->
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 渐变背景 -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:startColor="#3DA7ED"
+                android:endColor="#037369"
+                android:angle="270"/> <!-- 270度的渐变 -->
+            <size android:width="200dp" android:height="200dp"/> <!-- 按钮大小 -->
+        </shape>
+    </item>
+
+    <!-- Ripple 效果 -->
+    <item android:id="@android:id/mask">
+        <ripple
+            android:color="#80FFFFFF"
+            android:duration="300"> <!-- 设置Ripple动画持续时间为300毫秒 -->
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="#19A2FB"/> <!-- 指定按钮的背景颜色 -->
+                </shape>
+            </item>
+        </ripple>
+    </item>
+
+</layer-list>
