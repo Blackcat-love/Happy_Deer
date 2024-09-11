@@ -7,18 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- 背景图片 -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/rebecca"
-            android:scaleType="centerCrop"
-            android:alpha="0.5" />
+<!--         背景图片 -->
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/rebecca"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:alpha="0.5" />-->
 
 
         <LinearLayout
@@ -31,7 +33,7 @@
                 android:id="@+id/text_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="距离上一次锻炼已经过了 (X) 小时 (Y) 天"
+                android:text="距离上一次锻炼已经过了 - 小时 - 天"
                 android:textColor="@color/black"
                 android:layout_margin="30dp"
                 android:textSize="16sp" />
@@ -43,10 +45,8 @@
                 android:layout_height="200dp"
                 android:background="@drawable/circular_button"
                 android:text="开始锻炼"
-                android:textColor="#FDFDFD"
-                android:textSize="18sp"
-                android:padding="0dp" />
-
+                android:textSize="20sp"
+                android:padding="0dp"/>
 
             <TextView
                 android:id="@+id/text_hp"
@@ -81,25 +81,29 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start">
-        <!-- 背景图片 -->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/background"
-            android:scaleType="centerCrop"
-            android:alpha="0.5" />
 
-        <LinearLayout
-            android:orientation="vertical"
+    <androidx.drawerlayout.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 主内容 -->
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="50dp"
-            android:paddingBottom="16dp">
+            android:layout_height="match_parent">
+            <!-- 这里放置主内容 -->
+        </FrameLayout>
+
+        <!-- 自定义侧边导航 -->
+        <LinearLayout
+            android:id="@+id/nav_menu"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:orientation="vertical"
+            android:background="@android:color/white">
 
             <TextView
                 android:id="@+id/nav_home"
@@ -109,6 +113,7 @@
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:padding="12dp"
+                android:layout_marginTop="50dp"
                 android:background="?attr/selectableItemBackground"
                 android:layout_marginBottom="8dp"/>
 
@@ -133,9 +138,7 @@
                 android:padding="12dp"
                 android:background="?attr/selectableItemBackground"/>
         </LinearLayout>
-
-    </com.google.android.material.navigation.NavigationView>
-
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

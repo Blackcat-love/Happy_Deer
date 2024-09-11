@@ -53,25 +53,24 @@
         android:autoLink="email"
         android:layout_marginTop="8dp"/>
 
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="人的一生里会遇到的痛苦太多了。而支撑着我们走下去的，大概就是，平凡生活里的一点点琐碎而渺小的快乐，愿你安好，陌生人"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="16dp"/>
 
     <TextView
         android:id="@+id/disclaimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="声明: 本应用仅供学习和研究用途，使用者需遵守适用法律法规。"
+        android:text="声明: 本应用仅供学习和研究用途，使用者需遵守适用法律法规"
         android:textSize="14sp"
         android:textColor="#999999"
         android:lineSpacingExtra="4dp"
         android:layout_marginTop="16dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="当前版本: 1.0.0-alphal"
-        android:textSize="14sp"
-        android:textColor="#999999"
-        android:lineSpacingExtra="4dp"
-        android:layout_marginTop="16dp"/>
+
 
 </LinearLayout>

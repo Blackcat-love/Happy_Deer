@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/DelDateBase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="删除数据库"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/selectDateBase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="查询所有表"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/delDateById"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="根据ID删除数据"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textButton4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button 4"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/textButton5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button 5"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/textButton6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button 6"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textButton7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button 4"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/textButton8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button 5"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#6200EE"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/textButton9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button 6"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:background="#265BAA"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/inputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入文本" />
+
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/logTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="日志信息将在这里显示"
+            android:padding="16dp"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp" />
+    </ScrollView>
+
+</LinearLayout>
