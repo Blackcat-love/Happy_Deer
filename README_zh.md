@@ -1,12 +1,12 @@
 ## 针对安卓系统的单个任务时间管理项目
 <hr>
-<div style="text-align: center;">
+<p align="center">
     <img src="docs_assets/Java.png" alt="Java" width="200"/>
-</div>
+</p>
 
-<div style="text-align: center;">
+<p align="center">
 <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
-</div>
+</p>
 
 ## 关于
 该项目的主要功能是记录单个任务的执行时间，显示间隔时间，并最终分析数据以形成统计表。
@@ -28,7 +28,7 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 
 ## 提交issues前的注意
 
-请阅读 http://www.catb.org/~esr/faqs/smart-questions.html 来让你的问题更加智慧
+请阅读 https://lug.ustc.edu.cn/wiki/doc/smart-questions/ 来让你的问题更加智慧
 
 ## 待做
 - [x] 添加开发者页面.
