@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-<a href="README.md">English</a> | <a href="README-zh.md"> 简体中文 (Simplified Chinese) </a> <a href="README-ja.md"> 日本語 (Japanese) </a> <a> 한국어 (Korean) </a>
+<a href="README.md">English</a> | <a href="README-zh.md"> 简体中文 (Simplified Chinese) </a> | <a href="README-ja.md"> 日本語 (Japanese) </a> | <a href="README-kokr.md"> 한국어 (Korean) </a>
 </p>
 
 ## 关于
