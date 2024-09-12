@@ -1,11 +1,12 @@
 ## SingleTask Time Management Project for Android (STAMP-A)
 
 <p align="center">
-    <img src="docs_assets/Java.png" alt="Java" width="200"/>
+    <img src="docs_assets/Java.png" alt="Java" width="200px"/>
+    <img src="docs_assets/Android.png" alt="Android" width="200px">
 </p>
 
 <p align="center">
-<a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+<a href="README.md">English</a> | <a href="README-zh.md"> 简体中文 (Simplified Chinese) </a> <a href="README-ja.md"> 日本語 (Japanese) </a> <a href="README-kokr.md"> 한국어 (Korean) </a>
 </p>
 
 ## About
