@@ -1,5 +1,5 @@
 ## 针对安卓系统的单个任务时间管理项目
-<hr>
+
 <p align="center">
     <img src="docs_assets/Java.png" alt="Java" width="200"/>
 </p>

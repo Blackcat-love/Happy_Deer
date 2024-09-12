@@ -1,12 +1,12 @@
 ## SingleTask Time Management Project for Android (STAMP-A)
-<hr>
-<div style="text-align: center;">
-    <img src="docs_assets/Java.png" alt="Java" width="200"/>
-</div>
 
-<div style="text-align: center;">
+<p align="center">
+    <img src="docs_assets/Java.png" alt="Java" width="200"/>
+</p>
+
+<p align="center">
 <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
-</div>
+</p>
 
 ## About
 The main function of this project is to record the execution time of a single task, display the interval time, and finally analyze the data to form a statistical table
