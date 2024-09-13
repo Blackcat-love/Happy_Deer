@@ -330,7 +330,10 @@ public static int calculateMinutesDifference(String lastDateTime, String current
                 int remainingHours = hours % 24;
                 Log.d("Last_time",last_time);
                 Log.d("now_time",now_time);
-                textDistance.setText("距离上次锻炼已经过了" + days + " 天 " + remainingHours + " 小时 " + remainingMinutes + " 分钟。");
+//                从资源中获取字符串
+                String Interval_Time = getResources().getString(R.string.Interval_time);
+                String formattedText = String.format(Interval_Time, days, remainingHours, remainingMinutes);
+                textDistance.setText(formattedText);
                 // 判断是否恢复 HP
                 if (totalMinutes >= requiredRestoreMinutes) {
                     text_hp.setText("HP已经恢复完全，可以开始锻炼啦");

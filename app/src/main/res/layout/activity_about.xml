@@ -46,7 +46,7 @@
         android:id="@+id/iwanttosay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="如果在使用过程中发现问题或者想要提出修改意见欢迎联系 blackact_19216811@163.com"
+        android:text="联系作者:blackcat_19216811@163.com"
         android:textSize="16sp"
         android:textColor="#666666"
         android:clickable="true"

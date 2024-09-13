@@ -1,3 +1,12 @@
 <resources>
+<!--    activity_main-->
     <string name="app_name">happy_deer</string>
+    <string name="start_btn_text" translatable="false">start</string>
+    <string name="Interval_time" translatable="false">%1$d days, %2$d hours, %3$d minutes since last activity.</string>
+    <string name="Be_ready" translatable="false">You can start anytime</string>
+    <string name="Not_ready" translatable="false">I think you need a break</string>
+<!--    activity_main_Sidebar-->
+    <string name="home_text" translatable="false">Home</string>
+    <string name="settings_text" translatable="false">Settings</string>
+    <string name="about_text" translatable="false">About</string>
 </resources>
