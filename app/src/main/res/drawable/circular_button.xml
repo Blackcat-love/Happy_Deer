@@ -19,7 +19,7 @@
             android:duration="300"> <!-- 设置Ripple动画持续时间为300毫秒 -->
             <item>
                 <shape android:shape="oval">
-                    <solid android:color="#19A2FB"/> <!-- 指定按钮的背景颜色 -->
+                    <solid android:color="#33C1DA"/> <!-- 指定按钮的背景颜色 -->
                 </shape>
             </item>
         </ripple>

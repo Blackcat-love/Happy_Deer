@@ -41,6 +41,11 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 
 ## 版本更新
 
+### [1.0.1] - 2024-09-14
+- **Added**: 添加了样式设置的功能
+- **Optimized**: 重新设计了主页布局，统一字体大小和布局大小
+- **Fixed** 修复完善了多语言适配的问题
+
 ### [1.0.0] - 2024-09-12
 - **Added**: 添加了README文档，并发布第一个测试版本.
 - **Optimized**: 重新设计了主页布局，以提高可用性，同时保持相同的视觉外观.

@@ -29,11 +29,19 @@ public class settingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         TextView ThemeSetting = findViewById(R.id.themeSetting);
+        TextView StyleSetting = findViewById(R.id.styleSetting);
         TextView dateSetting = findViewById(R.id.dateSetting);
         TextView version = findViewById(R.id.version);
         LinearLayout warning = findViewById(R.id.warning);
 
         ThemeSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertDialog("提示","当前功能开发中");
+            }
+        });
+
+        StyleSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showAlertDialog("提示","当前功能开发中");

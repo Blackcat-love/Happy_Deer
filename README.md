@@ -41,6 +41,11 @@ Please read http://www.catb.org/~esr/faqs/smart-questions.html Make your questio
 
 ## Version Update
 
+### [1.0.1] - 2024-09-14
+- **Added**: Added styling feature
+- **Optimized**: Redesigned the homepage layout to unify the font size and layout size
+- **Fixed** Fixed and improved the multi-language adaptation issue
+
 ### [1.0.0] - 2024-09-12
 - **Added**: Added README document and released the first test version.
 - **Optimized**: Redesigned the homepage layout for better usability while maintaining the same visual appearance.

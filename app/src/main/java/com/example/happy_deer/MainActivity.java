@@ -334,11 +334,14 @@ public static int calculateMinutesDifference(String lastDateTime, String current
                 String Interval_Time = getResources().getString(R.string.Interval_time);
                 String formattedText = String.format(Interval_Time, days, remainingHours, remainingMinutes);
                 textDistance.setText(formattedText);
+//                获取状态字符串
+                String be_ready = getResources().getString(R.string.Be_ready);
+                String not_ready = getResources().getString(R.string.Not_ready);
                 // 判断是否恢复 HP
                 if (totalMinutes >= requiredRestoreMinutes) {
-                    text_hp.setText("HP已经恢复完全，可以开始锻炼啦");
+                    text_hp.setText(be_ready);
                 } else {
-                    text_hp.setText("HP耗尽，请休息和补充营养");
+                    text_hp.setText(not_ready);
                 }
             }else {
                 Log.d("警告", "没有查询到数据");

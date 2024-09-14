@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="关于应用"
+        android:text="@string/about_text"
         android:textSize="26sp"
         android:textColor="#333333"
         android:textStyle="bold" />
@@ -19,8 +19,8 @@
         android:id="@+id/author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="作者: NANA"
-        android:textSize="18sp"
+        android:text="@string/About_Author"
+        android:textSize="16sp"
         android:textColor="#666666"
         android:layout_marginTop="16dp"/>
 
@@ -28,7 +28,7 @@
         android:id="@+id/copyright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="© 2024 NANA. 保留所有权利。"
+        android:text="@string/About_Copyright"
         android:textSize="16sp"
         android:textColor="#666666"
         android:layout_marginTop="8dp"/>
@@ -37,40 +37,10 @@
         android:id="@+id/link_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="开源项目: https://github.com/Blackcat-love/Happy_Deer"
+        android:text="@string/About_OP_source_Description"
         android:autoLink="web"
         android:textSize="16sp"
         android:textColor="#666666"
         android:layout_marginTop="8dp"/>
-    <TextView
-        android:id="@+id/iwanttosay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="联系作者:blackcat_19216811@163.com"
-        android:textSize="16sp"
-        android:textColor="#666666"
-        android:clickable="true"
-        android:autoLink="email"
-        android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="人的一生里会遇到的痛苦太多了。而支撑着我们走下去的，大概就是，平凡生活里的一点点琐碎而渺小的快乐，愿你安好，陌生人"
-        android:textSize="14sp"
-        android:textColor="#999999"
-        android:lineSpacingExtra="4dp"
-        android:layout_marginTop="16dp"/>
-
-    <TextView
-        android:id="@+id/disclaimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="声明: 本应用仅供学习和研究用途，使用者需遵守适用法律法规"
-        android:textSize="14sp"
-        android:textColor="#999999"
-        android:lineSpacingExtra="4dp"
-        android:layout_marginTop="16dp"/>
-
 
 </LinearLayout>

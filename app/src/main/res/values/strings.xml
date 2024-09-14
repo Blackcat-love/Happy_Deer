@@ -9,4 +9,14 @@
     <string name="home_text" translatable="false">Home</string>
     <string name="settings_text" translatable="false">Settings</string>
     <string name="about_text" translatable="false">About</string>
+<!--    activity_setting-->h
+    <string name="Settings_Theme_text" translatable="false">Theme</string>
+    <string name="Settings_Style_text" translatable="false">Style</string>
+    <string name="Settings_Data_text" translatable="false">DataManagement</string>
+    <string name="Settings_Version_text" translatable="false">Version</string>
+    <string name="Settings_Developers_text" translatable="false">DeveloperMode</string>
+<!--    activity_about-->
+    <string name="About_Author" translatable="false">author:NANA</string>
+    <string name="About_Copyright" translatable="false">© 2024 NANA. All rights reserved.</string>
+    <string name="About_OP_source_Description" translatable="false">The current software is open source \n https://github.com/NANAFREE/Happy_Deer</string>
 </resources>

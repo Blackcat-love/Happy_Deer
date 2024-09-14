@@ -10,20 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/main_backgroud"
+            android:scaleType="centerCrop"
+            android:alpha="0.5" />
+
+
+
         <!-- 上部分 -->
         <LinearLayout
             android:id="@+id/top_section"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:orientation="vertical"
             android:layout_alignParentTop="true">
 
             <ImageView
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="120px"
+                android:layout_height="120px"
                 android:id="@+id/start_menu"
                 android:src="@drawable/menu"
-                android:layout_margin="20dp"/>
+                android:layout_margin="35dp"/>
 
         </LinearLayout>
 
@@ -83,7 +92,7 @@
     <!-- 侧栏 -->
     <RelativeLayout
         android:id="@+id/side_menu"
-        android:layout_width="250dp"
+        android:layout_width="130dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="#FFFFFF">
@@ -93,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/home_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
             android:layout_alignParentTop="true"
             android:layout_marginTop="50dp"/>
@@ -103,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/settings_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
             android:layout_below="@id/nav_home"
             android:layout_marginTop="16dp"/>
@@ -113,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/about_text"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@android:color/black"
             android:layout_below="@id/nav_settings"
             android:layout_marginTop="16dp"/>
