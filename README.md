@@ -38,6 +38,7 @@ Please read http://www.catb.org/~esr/faqs/smart-questions.html Make your questio
 - [ ] Multi-language support.
 - [ ] Cache Cleaning.
 - [ ] Problems and solutions regarding publicity and promotion.
+- [ ] Import and export of data
 
 ## Version Update
 

@@ -1,5 +1,9 @@
 package com.example.happy_deer;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -138,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("点击触发","Home被点击了");
+                bounceAnimation(home);
             }
         });
 
@@ -146,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("点击触发","Settings被点击了");
+                bounceAnimation(navSettings);
                 Intent setting = new Intent(MainActivity.this, settingActivity.class);
                 startActivity(setting);
             }
@@ -156,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("点击触发","About被点击了");
+                bounceAnimation(navAbout);
                 Intent about = new Intent(MainActivity.this, aboutActivity.class);
                 startActivity(about);
             }
@@ -368,6 +375,47 @@ public static int calculateMinutesDifference(String lastDateTime, String current
         editor.putInt("restoreHours", hours);
         editor.putInt("restoreMinutes", minutes);
         editor.apply(); // 应用更改
+    }
+
+    private void bounceAnimation(View view) {
+        // 放大动画
+        ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(view, "scaleX", 1.2f); // 放大到1.2倍
+        ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(view, "scaleY", 1.2f); // 放大到1.2倍
+        scaleUpX.setDuration(100); // 动画持续时间
+        scaleUpY.setDuration(100);
+
+        // 向上移动动画
+        ObjectAnimator animatorUp = ObjectAnimator.ofFloat(view, "translationY", -30f);
+        animatorUp.setDuration(100); // 动画持续时间
+
+        // 向下恢复的缩小动画
+        ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(view, "scaleX", 1f); // 恢复到原始大小
+        ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(view, "scaleY", 1f); // 恢复到原始大小
+        scaleDownX.setDuration(100);
+        scaleDownY.setDuration(100);
+
+        // 向下恢复的位移动画
+        ObjectAnimator animatorDown = ObjectAnimator.ofFloat(view, "translationY", 0f);
+        animatorDown.setDuration(100);
+
+        // 动画顺序执行
+        scaleUpX.start();
+        scaleUpY.start();
+
+        // 在放大动画结束后开始向上移动动画
+        AnimatorSet upAnimatorSet = new AnimatorSet();
+        upAnimatorSet.playTogether(scaleUpX, scaleUpY, animatorUp);
+        upAnimatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                // 在向上移动结束后开始缩小并向下恢复
+                AnimatorSet downAnimatorSet = new AnimatorSet();
+                downAnimatorSet.playTogether(scaleDownX, scaleDownY, animatorDown);
+                downAnimatorSet.start();
+            }
+        });
+
+        upAnimatorSet.start();
     }
 
 

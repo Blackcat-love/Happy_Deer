@@ -2,4 +2,21 @@
     <string name="app_name">快乐鹿</string>
     <string name="start_btn_text" translatable="false">开始</string>
     <string name="Interval_time" translatable="false">距离上一次锻炼已经过了 %1$d 天 %2$d 小时 %3$d 分钟。</string>
+    <string name="Be_ready" translatable="false">你可以做任何事</string>
+    <string name="Not_ready" translatable="false">我觉得你需要休息</string>
+    <!--    activity_main_Sidebar-->
+    <string name="home_text" translatable="false">家</string>
+    <string name="settings_text" translatable="false">设置</string>
+    <string name="about_text" translatable="false">关于</string>
+    <!--    activity_setting-->h
+    <string name="Settings_Theme_text" translatable="false">主题</string>
+    <string name="Settings_Style_text" translatable="false">样式</string>
+    <string name="Settings_Data_text" translatable="false">数据管理</string>
+    <string name="Settings_Version_text" translatable="false">版本</string>
+    <string name="Settings_Developers_text" translatable="false">开发者模式</string>
+    <!--    activity_about-->
+    <string name="About_Author" translatable="false">作者:娜娜</string>
+    <string name="About_Copyright" translatable="false">© 2024 NANA. All rights reserved.</string>
+    <string name="About_OP_source_Description" translatable="false">软件已开源： \n https://github.com/NANAFREE/Happy_Deer</string>
+    <string name="About_Feelings" translatable="false">人的一生里会遇到的痛苦太多了。而支撑着我们走下去的,大概就是,平凡生活里的一点点琐碎而渺小的快乐</string>
 </resources>

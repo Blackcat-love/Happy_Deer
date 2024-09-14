@@ -105,7 +105,8 @@
             android:textSize="20sp"
             android:textColor="@android:color/black"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="30dp"/>
 
         <TextView
             android:id="@+id/nav_settings"
@@ -115,7 +116,8 @@
             android:textSize="20sp"
             android:textColor="@android:color/black"
             android:layout_below="@id/nav_home"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"/>
 
         <TextView
             android:id="@+id/nav_about"
@@ -125,7 +127,8 @@
             android:textSize="20sp"
             android:textColor="@android:color/black"
             android:layout_below="@id/nav_settings"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"/>
 
     </RelativeLayout>
 

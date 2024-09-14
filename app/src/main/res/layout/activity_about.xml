@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/about_text"
         android:textSize="26sp"
-        android:textColor="#333333"
+        android:textColor="#000000"
         android:textStyle="bold" />
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="@string/About_Author"
         android:textSize="16sp"
-        android:textColor="#666666"
+        android:textColor="#000000"
         android:layout_marginTop="16dp"/>
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="@string/About_Copyright"
         android:textSize="16sp"
-        android:textColor="#666666"
+        android:textColor="#000000"
         android:layout_marginTop="8dp"/>
 
     <TextView
@@ -40,7 +40,17 @@
         android:text="@string/About_OP_source_Description"
         android:autoLink="web"
         android:textSize="16sp"
-        android:textColor="#666666"
+        android:textColor="#000000"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/Feelings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/About_Feelings"
+        android:autoLink="web"
+        android:textSize="16sp"
+        android:textColor="#707070"
         android:layout_marginTop="8dp"/>
 
 </LinearLayout>
