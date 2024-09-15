@@ -52,5 +52,9 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 - **Optimized**: 重新设计了主页布局，以提高可用性，同时保持相同的视觉外观.
 - **Fixed** 修复了主页侧边栏触摸时无响应的问题，以及点击按钮后无响应的问题.
 
+## 目前问题
+- 关于多语言自定义切换，需要增加java端代码，将所有TextView的Text在JAVA端动态绑定Values/strings,然后添加一个判断条件保存在本地，这样才可以实现自定义语言的切换且保证下次启动还是一样的语言。
+- 
+
 ## 贡献
 欢迎贡献，感谢所有人

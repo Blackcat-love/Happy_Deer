@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Happy_deer"
         tools:targetApi="31">
         <activity
+            android:name=".StyleActivity"
+            android:exported="false" />
+        <activity
             android:name=".DevelopersActivity"
             android:exported="false" />
         <activity

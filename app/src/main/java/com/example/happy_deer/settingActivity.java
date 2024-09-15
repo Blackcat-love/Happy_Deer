@@ -21,6 +21,7 @@ import org.w3c.dom.Text;
 
 public class settingActivity extends AppCompatActivity {
     private int Developers_flag = 1;
+    private Toast currentToast; // 声明一个 Toast 对象
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,21 +38,22 @@ public class settingActivity extends AppCompatActivity {
         ThemeSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialog("提示","当前功能开发中");
+                showToast("当前功能开发中");
             }
         });
 
         StyleSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialog("提示","当前功能开发中");
+                Intent Style = new Intent(settingActivity.this, StyleActivity.class);
+                startActivity(Style);
             }
         });
 
         dateSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialog("提示","当前功能开发中");
+                showToast("当前功能开发中");
             }
         });
 
@@ -75,9 +77,7 @@ public class settingActivity extends AppCompatActivity {
                     int versionCode = packageInfo.versionCode;   // 获取版本号
 
                     // 显示版本信息（可以根据需要选择显示方式，例如Toast或者对话框）
-                    Toast.makeText(getApplicationContext(),
-                            "当前版本: " + versionName,
-                            Toast.LENGTH_LONG).show();
+                    showToast("当前版本:" + versionName);
                 } catch (PackageManager.NameNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -94,6 +94,7 @@ public class settingActivity extends AppCompatActivity {
 
     }
 
+//    它应该用在某种需要思考判断来防止意外发生的提示
     public void showAlertDialog(String title,String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title)
@@ -116,5 +117,14 @@ public class settingActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void showToast(String message) {
+        // 如果当前有 Toast 在显示，取消它
+        if (currentToast != null) {
+            currentToast.cancel(); // 取消当前的 Toast
+        }
+        // 创建新 Toast
+        currentToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        currentToast.show(); // 显示新 Toast
+    }
 
 }
