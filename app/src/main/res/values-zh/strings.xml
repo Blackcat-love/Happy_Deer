@@ -19,4 +19,7 @@
     <string name="About_Copyright" translatable="false">© 2024 NANA. All rights reserved.</string>
     <string name="About_OP_source_Description" translatable="false">软件已开源： \n https://github.com/NANAFREE/Happy_Deer</string>
     <string name="About_Feelings" translatable="false">人的一生里会遇到的痛苦太多了。而支撑着我们走下去的,大概就是,平凡生活里的一点点琐碎而渺小的快乐</string>
+    <string name="About_keep_text" translatable="false">“目标的实现依赖于有效的自律” \n ― Jim Rohn</string>
+    <!--    activity_style-->
+    <string name="Style_hint_text" translatable="false">重启后生效</string>
 </resources>
