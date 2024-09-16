@@ -16,7 +16,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
 
 
 public class settingActivity extends AppCompatActivity {
@@ -126,5 +125,6 @@ public class settingActivity extends AppCompatActivity {
         currentToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
         currentToast.show(); // 显示新 Toast
     }
+
 
 }

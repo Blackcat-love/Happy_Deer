@@ -10,17 +10,21 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     private int restoreDays;
     private int restoreHours;
     private int restoreMinutes;
+    private ImageView main_bg;
+    private ImageView main_sidbar_bg;
 
 
     @Override
@@ -58,9 +64,15 @@ public class MainActivity extends AppCompatActivity {
         navAbout = findViewById(R.id.nav_about);
         drawerLayout = findViewById(R.id.drawer_layout);
         open_menu = findViewById(R.id.start_menu);
+        main_bg = findViewById(R.id.main_background);
+        main_sidbar_bg = findViewById(R.id.main_sidbar_bg);
+
 
         // 执行第一次检查
         checkAndUpdateData();
+
+        //执行背景检测
+        load_main_bg();
 
         // 每60秒执行一次
         runnable = new Runnable() {
@@ -416,6 +428,38 @@ public static int calculateMinutesDifference(String lastDateTime, String current
         });
 
         upAnimatorSet.start();
+    }
+
+    private void load_main_bg(){
+        SharedPreferences sharedPreferences = getSharedPreferences("path", MODE_PRIVATE);
+        String path_main = sharedPreferences.getString("mian_background_image_path", null);
+        String path_sidebar = sharedPreferences.getString("mian_background_Sidebar_image_path", null);
+        // 检查 path 是否有效
+        if (path_main != null) {
+            // 创建 File 对象
+            File imageFile = new File(path_main);
+
+            // 转换为 Uri
+            Uri imageUri = Uri.fromFile(imageFile);
+
+            // 设置 ImageView 的图像
+            main_bg.setImageURI(imageUri);
+        } else {
+            // 处理路径为 null 的情况，比如设置一个默认图像
+            Log.d("MainActivity","检测到没有设置背景图片，加载默认图片");
+        }
+
+        if (path_sidebar != null){
+            File imageFile = new File(path_sidebar);
+            // 转换为 Uri
+            Uri imageUri = Uri.fromFile(imageFile);
+
+            // 设置 ImageView 的图像
+            main_sidbar_bg.setImageURI(imageUri);
+        }else {
+            // 处理路径为 null 的情况，比如设置一个默认图像
+            Log.d("MainActivity","检测到没有设置背景图片，加载默认图片");
+        }
     }
 
 

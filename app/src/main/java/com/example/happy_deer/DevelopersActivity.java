@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class DevelopersActivity extends AppCompatActivity {
@@ -32,6 +36,8 @@ public class DevelopersActivity extends AppCompatActivity {
         EditText inputText = findViewById(R.id.inputText);
         TextView delDateById_btn = findViewById(R.id.delDateById);
         TextView selectDateBase = findViewById(R.id.selectDateBase);
+        TextView delAllFile = findViewById(R.id.delAllFile);
+        TextView SelectFilesAllDate = findViewById(R.id.SelectFilesAllDate);
 
         DelDateBase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +84,29 @@ public class DevelopersActivity extends AppCompatActivity {
             }
         });
 
+        delAllFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteAllFilesInInternalStorage();
+            }
+        });
+
+        SelectFilesAllDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<String> files = listAllFilesInInternalStorage();
+                StringBuilder fileLog = new StringBuilder(); // 使用 StringBuilder 来构建文件列表
+                // 遍历文件名列表
+                for (String fileName : files) {
+                    Log.d("File", fileName); // 打印文件名
+                    fileLog.append(fileName).append("\n"); // 将文件名添加到 StringBuilder，并换行
+                }
+                //打印到TextView
+                logTextView.setText(fileLog.toString());
+                // 显示文件数量
+                Toast.makeText(DevelopersActivity.this, "Total files: " + files.size(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -173,8 +202,51 @@ public void displayAllRecords(TextView textView) {
     textView.setText(result.toString());
 }
 
+    public void deleteAllFilesInInternalStorage() {
+        // 获取内部存储的 files 目录
+        File directory = getFilesDir();
 
+        // 检查目录是否存在且是一个目录
+        if (directory.exists() && directory.isDirectory()) {
+            // 获取目录下所有文件
+            File[] files = directory.listFiles();
 
+            if (files != null) {
+                for (File file : files) {
+                    // 如果是文件，则删除
+                    if (file.isFile()) {
+                        boolean deleted = file.delete();
+                        if (deleted) {
+                            Log.d("Delete File", file.getName() + " deleted successfully.");
+                        } else {
+                            Log.d("Delete File", "Failed to delete " + file.getName());
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+    public List<String> listAllFilesInInternalStorage() {
+        List<String> fileList = new ArrayList<>();
+
+        // 获取内部存储的 files 目录
+        File directory = getFilesDir();
+
+        // 检查目录是否存在且是一个目录
+        if (directory.exists() && directory.isDirectory()) {
+            // 获取目录下所有文件
+            File[] files = directory.listFiles();
+
+            if (files != null) {
+                for (File file : files) {
+                    // 将文件名添加到列表中
+                    fileList.add(file.getName());
+                }
+            }
+        }
+
+        return fileList; // 返回包含所有文件名的列表
+    }
 
 }

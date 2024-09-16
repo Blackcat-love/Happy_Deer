@@ -1,30 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/main_background_update"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:src="@drawable/main_backgroud"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/upload_main_button"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="上传"
-        android:textSize="16sp"
+        android:text="上传主页背景"
+        android:textSize="18sp"
         android:gravity="center"
-        android:layout_below="@id/main_background_update"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:padding="8dp"
         android:background="@drawable/button_background"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:textColor="@color/black"/>
 
+    <ImageView
+        android:id="@+id/main_Sidebar_background_update"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/sidebar_background"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="16dp"/>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/upload_main_Sidebar_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上传侧栏背景"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:background="@drawable/button_background"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@color/black"/>
+
+</LinearLayout>

@@ -13,6 +13,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/main_background"
             android:src="@drawable/main_backgroud"
             android:scaleType="centerCrop"
             android:alpha="0.5" />
@@ -96,6 +97,14 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="#FFFFFF">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_sidbar_bg"
+            android:src="@drawable/sidebar_background"
+            android:scaleType="centerCrop"
+            android:alpha="0.5" />
 
         <TextView
             android:id="@+id/nav_home"
