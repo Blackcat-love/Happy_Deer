@@ -39,6 +39,7 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 - [ ] 清理缓存.
 - [ ] 关于宣传和推广的问题于解决方案.
 - [ ] 数据的导入导出
+- [ ] 可以自定义text_hp的判断
 
 ## 版本更新
 

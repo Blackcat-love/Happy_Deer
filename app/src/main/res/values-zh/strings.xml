@@ -8,7 +8,7 @@
     <string name="home_text" translatable="false">家</string>
     <string name="settings_text" translatable="false">设置</string>
     <string name="about_text" translatable="false">关于</string>
-    <!--    activity_setting-->h
+    <!--    activity_setting-->
     <string name="Settings_Theme_text" translatable="false">主题</string>
     <string name="Settings_Style_text" translatable="false">样式</string>
     <string name="Settings_Data_text" translatable="false">数据管理</string>
