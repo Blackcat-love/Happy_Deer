@@ -38,6 +38,7 @@ public class DevelopersActivity extends AppCompatActivity {
         TextView selectDateBase = findViewById(R.id.selectDateBase);
         TextView delAllFile = findViewById(R.id.delAllFile);
         TextView SelectFilesAllDate = findViewById(R.id.SelectFilesAllDate);
+        TextView GetUpdateApp = findViewById(R.id.GetUpdateApp);
 
         DelDateBase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +106,13 @@ public class DevelopersActivity extends AppCompatActivity {
                 logTextView.setText(fileLog.toString());
                 // 显示文件数量
                 Toast.makeText(DevelopersActivity.this, "Total files: " + files.size(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        GetUpdateApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UpdateApp.fetchJsonData();
             }
         });
 
