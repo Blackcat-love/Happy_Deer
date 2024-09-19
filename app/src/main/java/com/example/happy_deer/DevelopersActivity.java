@@ -1,7 +1,10 @@
 package com.example.happy_deer;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,11 +20,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class DevelopersActivity extends AppCompatActivity {
+
+    private SimpleHttpServer server;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,34 @@ public class DevelopersActivity extends AppCompatActivity {
         TextView delAllFile = findViewById(R.id.delAllFile);
         TextView SelectFilesAllDate = findViewById(R.id.SelectFilesAllDate);
         TextView GetUpdateApp = findViewById(R.id.GetUpdateApp);
+        TextView startServer = findViewById(R.id.startServer);
+        TextView closeServer = findViewById(R.id.closeServer);
+
+        closeServer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (server != null) {
+                    server.stop(); // 停止服务器
+                    Log.e("DevelopersActivity","Server已关闭");
+                }
+            }
+        });
+
+        startServer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    server = new SimpleHttpServer(8080); // 使用8080端口
+                    server.start();
+                    Log.e("DevelopersActivity","Server已启动");
+                    String localIpAddress = getLocalIpAddress(DevelopersActivity.this);
+                    System.out.println("Local IP Address: " + localIpAddress);
+                    logTextView.setText("Server已启动，在模拟器上通过localhost:8080访问成功，真机测试:" + localIpAddress + ":8080");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
         DelDateBase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,6 +289,25 @@ public void displayAllRecords(TextView textView) {
         }
 
         return fileList; // 返回包含所有文件名的列表
+    }
+
+    public static String getLocalIpAddress(Context context) {
+        try {
+            // 获取 WifiManager
+            WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+
+            // 获取 IP 地址，返回值为 int 型，需要转换为字符串
+            int ipAddress = wifiInfo.getIpAddress();
+            return String.format("%d.%d.%d.%d",
+                    (ipAddress & 0xff),
+                    (ipAddress >> 8 & 0xff),
+                    (ipAddress >> 16 & 0xff),
+                    (ipAddress >> 24 & 0xff));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
