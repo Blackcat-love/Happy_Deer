@@ -1,5 +1,7 @@
 package com.example.happy_deer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -8,6 +10,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,8 @@ public class StyleActivity extends AppCompatActivity {
     private ImageView main_sidebar_bg;
     private int flag;
     private Toast currentToast; // 声明一个 Toast 对象
+    private TextView textDays, textHours, textMinutes;
+    private int days = 0, hours = 0, minutes = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,61 @@ public class StyleActivity extends AppCompatActivity {
         main_backgound_img = findViewById(R.id.main_background_update);
         main_sidebar_bg = findViewById(R.id.main_Sidebar_background_update);
         TextView upload_main_Sidebar_btn = findViewById(R.id.upload_main_Sidebar_button);
+        textDays = findViewById(R.id.text_days);
+        textHours = findViewById(R.id.text_hours);
+        textMinutes = findViewById(R.id.text_minutes);
+        TextView SetTime = findViewById(R.id.Set_Time);
+
+//        创建时加载
+        Log.i("StyleActivity","读取配置信息");
+        loadSet_Time();
+
+//        修改时间阈值
+        SetTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences intervalTime = getSharedPreferences("Interval_time", MODE_PRIVATE);
+                SharedPreferences.Editor edit = intervalTime.edit();
+                edit.putString("Days",String.valueOf(days));
+                edit.putString("Hours",String.valueOf(hours));
+                edit.putString("Minutes",String.valueOf(minutes));
+                edit.apply();
+                showToast("重启后生效");
+            }
+        });
+
+        // 点击天数
+        textDays.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNumberPicker("天数", 0, 30, (number) -> {
+                    days = number;
+                    textDays.setText("天数: " + days);
+                });
+            }
+        });
+
+        // 点击小时
+        textHours.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNumberPicker("小时", 0, 23, (number) -> {
+                    hours = number;
+                    textHours.setText("小时: " + hours);
+                });
+            }
+        });
+
+        // 点击分钟
+        textMinutes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showNumberPicker("分钟", 0, 59, (number) -> {
+                    minutes = number;
+                    textMinutes.setText("分钟: " + minutes);
+                });
+            }
+        });
 
         //加载背景图片
         load_settings_bg();
@@ -61,6 +121,13 @@ public class StyleActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("StyleActivity","当前活动已被销毁");
 
     }
 
@@ -175,6 +242,39 @@ public class StyleActivity extends AppCompatActivity {
         // 创建新 Toast
         currentToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
         currentToast.show(); // 显示新 Toast
+    }
+
+    private void showNumberPicker(String title, int minValue, int maxValue, NumberPickerListener listener) {
+        final NumberPicker numberPicker = new NumberPicker(this);
+        numberPicker.setMinValue(minValue);
+        numberPicker.setMaxValue(maxValue);
+        numberPicker.setValue(minValue);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title)
+                .setView(numberPicker)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        listener.onNumberPicked(numberPicker.getValue());
+                    }
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+
+    interface NumberPickerListener {
+        void onNumberPicked(int number);
+    }
+
+    private void loadSet_Time(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Interval_time", MODE_PRIVATE);
+        String share_Days = sharedPreferences.getString("Days", "0");
+        String share_Hours = sharedPreferences.getString("Hours", "0");
+        String share_Minutes = sharedPreferences.getString("Minutes", "0");
+        textDays.setText("天数: " + share_Days);
+        textHours.setText("小时: " + share_Hours);
+        textMinutes.setText("分钟: " + share_Minutes);
     }
 
 }

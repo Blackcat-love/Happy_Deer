@@ -38,9 +38,17 @@ Please read http://www.catb.org/~esr/faqs/smart-questions.html Make your questio
 - [ ] Multi-language support.
 - [ ] Cache Cleaning.
 - [ ] Problems and solutions regarding publicity and promotion.
-- [ ] Import and export of data
+- [ ] Import and export of data.
+- [ ] You can customize the judgment of text_hp.
+- [x] Use github release to achieve version control and automatic update of client program.
+- [ ] One-click sharing.
 
 ## Version Update
+
+### [1.0.2] - 2024-09-19
+- **Added**: Added new style settings Threshold time Home page background settings Sidebar background settings
+- **Added** Added automatic version checking to confirm updates
+- **Fixed** Several fixes
 
 ### [1.0.1] - 2024-09-14
 - **Added**: Added styling feature

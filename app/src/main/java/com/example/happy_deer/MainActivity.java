@@ -339,6 +339,15 @@ public static int calculateMinutesDifference(String lastDateTime, String current
                 Log.d("距离上次锻炼",String.valueOf(totalMinutes));
 //                计算打印到主页的时间
                 loadRestoreTime();
+//                获取设定好的时间阈值
+                SharedPreferences sharedPreferences = getSharedPreferences("Interval_time", MODE_PRIVATE);
+                String share_Days = sharedPreferences.getString("Days", "3");
+                String share_Hours = sharedPreferences.getString("Hours", "0");
+                String share_Minutes = sharedPreferences.getString("Minutes", "0");
+                Log.i("MainActivity","获取时间阈值:" + share_Days + "Day" + share_Hours + "Hours" + share_Minutes + "Minutes");
+                restoreDays = Integer.parseInt(share_Days);
+                restoreHours = Integer.parseInt(share_Hours);
+                restoreMinutes = Integer.parseInt(share_Minutes);
                 // 将恢复时间转化为总分钟
                 int requiredRestoreMinutes = (restoreDays * 24 * 60) + (restoreHours * 60) + restoreMinutes;
                 // 计算小时数和剩余分钟数
