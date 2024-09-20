@@ -1,8 +1,10 @@
 ## SingleTask Time Management Project for Android (STAMP-A)
 
 <p align="center">
-    <img src="docs_assets/Java.png" alt="Java" width="200px"/>
-    <img src="docs_assets/Android.png" alt="Android" width="200px">
+    <img src="docs_assets/Java.png" alt="Java" width="120px"/>
+    <img src="docs_assets/Android.png" alt="Android" width="120px">
+    <img src="docs_assets/GitHub.png" alt="Github" width="120px">
+    <img src="docs_assets/HTML.png" alt="HTML" width="120px">
 </p>
 
 <p align="center">
