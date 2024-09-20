@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 网络访问权限 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -17,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Happy_deer"
         tools:targetApi="31">
+        <activity
+            android:name=".DataManagementActivity"
+            android:exported="false" />
         <activity
             android:name=".StyleActivity"
             android:exported="false" />

@@ -21,6 +21,6 @@
     <string name="About_OP_source_Description" translatable="false">The current software is open source \n https://github.com/NANAFREE/Happy_Deer</string>
     <string name="About_Feelings" translatable="false">In a person\'s life, there will be too much pain. What keeps us going is probably the tiny, trivial joys found in the ordinary moments of life.</string>
     <string name="About_keep_text" translatable="false">“Discipline is the bridge between goals and accomplishment” \n ― Jim Rohn</string>
-<!--    activity_style-->
+    <!--    activity_style-->
     <string name="Style_hint_text" translatable="false">Take effect after restart</string>
 </resources>

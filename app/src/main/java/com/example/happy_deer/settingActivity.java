@@ -52,7 +52,8 @@ public class settingActivity extends AppCompatActivity {
         dateSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("当前功能开发中");
+                Intent Data = new Intent(settingActivity.this, DataManagementActivity.class);
+                startActivity(Data);
             }
         });
 

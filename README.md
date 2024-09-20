@@ -39,7 +39,7 @@ Please read http://www.catb.org/~esr/faqs/smart-questions.html Make your questio
 - [ ] Cache Cleaning.
 - [ ] Problems and solutions regarding publicity and promotion.
 - [ ] Import and export of data.
-- [ ] You can customize the judgment of text_hp.
+- [x] You can customize the judgment of text_hp.
 - [x] Use github release to achieve version control and automatic update of client program.
 - [ ] One-click sharing.
 

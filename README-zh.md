@@ -39,7 +39,7 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 - [ ] 清理缓存.
 - [ ] 关于宣传和推广的问题于解决方案.
 - [ ] 数据的导入导出
-- [ ] 可以自定义text_hp的判断
+- [x] 可以自定义text_hp的判断
 - [x] 利用github release实现客户端程序的版本控制和自动更新
 - [ ] 一键分享
 
@@ -63,6 +63,9 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 ## 目前问题
 - 关于多语言自定义切换，需要增加java端代码，将所有TextView的Text在JAVA端动态绑定Values/strings,然后添加一个判断条件保存在本地，这样才可以实现自定义语言的切换且保证下次启动还是一样的语言。
 - 切换背景如果过暗因为文字也是黑色导致看不清楚，需要一个检测判断当背景色调过暗后切换白色文字反之切换黑色。
+
+## 有趣想法
+- 我想要添加一个主题，是关于Vedal和Neuro,后续可能还有整个社群的设计元素
 
 ## 贡献
 欢迎贡献，感谢所有人
