@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             values.put("Time",formattedTime);
             if (formattedDate.equals(Date)){
 //                如果是当天
-                values.put("Frequency",Frequency + 1);
+                values.put("Frequency",String.valueOf(Integer.parseInt(Frequency) + 1));
             }else {
                 values.put("Frequency",1);
             }
