@@ -24,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     private int restoreMinutes;
     private ImageView main_bg;
     private ImageView main_sidbar_bg;
+    private TextView distance;
+    private TextView hp;
 
 
     @Override
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         open_menu = findViewById(R.id.start_menu);
         main_bg = findViewById(R.id.main_background);
         main_sidbar_bg = findViewById(R.id.main_sidbar_bg);
+        distance = findViewById(R.id.text_distance);
+        hp = findViewById(R.id.text_hp);
 
 
         // 执行第一次检查
@@ -73,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
         //执行背景检测
         load_main_bg();
+
+        //文字加载
+        load_main_text();
 
         // 每60秒执行一次
         runnable = new Runnable() {
@@ -469,6 +478,18 @@ public static int calculateMinutesDifference(String lastDateTime, String current
             // 处理路径为 null 的情况，比如设置一个默认图像
             Log.d("MainActivity","检测到没有设置背景图片，加载默认图片");
         }
+    }
+
+//    主页Text加载
+    private void load_main_text(){
+        String userLanguage = GetBrotherInformationHelper.getUserLanguage(MainActivity.this);
+        Log.i("MainActivity","UserLanguage:" + userLanguage );
+//        判断加载文本 此代码是为了后续可以自定义设置文本内容
+        if (userLanguage.equals("zh")){
+
+        }
+        //其他信息获取
+        Log.i("MainActivity","Android系统版本:" + GetBrotherInformationHelper.getAndroidVersion() + "AndroidSDK:" + GetBrotherInformationHelper.getSdkVersion() + "Android厂家型号:" + GetBrotherInformationHelper.getDeviceManufacturerAndModel());
     }
 
 
