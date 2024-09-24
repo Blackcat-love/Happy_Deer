@@ -1,5 +1,6 @@
 package com.example.happy_deer;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,9 +22,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 public class DevelopersActivity extends AppCompatActivity {
 
@@ -47,6 +52,7 @@ public class DevelopersActivity extends AppCompatActivity {
         TextView GetUpdateApp = findViewById(R.id.GetUpdateApp);
         TextView startServer = findViewById(R.id.startServer);
         TextView closeServer = findViewById(R.id.closeServer);
+        TextView addTextDate = findViewById(R.id.addTextDate);
 
         closeServer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +153,17 @@ public class DevelopersActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UpdateApp.fetchJsonData();
+            }
+        });
+
+//        增加测试数据
+        addTextDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DBOpenHelper dbOpenHelper = new DBOpenHelper(DevelopersActivity.this, "HealthRecords.db", null, 1);
+                SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+                insertRandomData(db);
+                db.close();
             }
         });
 
@@ -309,5 +326,43 @@ public void displayAllRecords(TextView textView) {
             return null;
         }
     }
+
+    public void insertRandomData(SQLiteDatabase db) {
+        Random random = new Random();
+        Calendar calendar = Calendar.getInstance();
+
+        // 每个月的日期范围
+        int year = 2023; // 可以根据需要设置年份
+        for (int month = 0; month < 12; month++) {
+            // 随机生成一个日期（每个月至少一条记录）
+            int day = random.nextInt(28) + 1; // 生成1到28之间的随机数，避免超出月份范围
+            calendar.set(year, month, day);
+
+            // 随机生成时间
+            int hour = random.nextInt(24); // 0-23
+            int minute = random.nextInt(60); // 0-59
+
+            // 随机生成其他字段
+            int frequency = random.nextInt(10) + 1; // 频率1到10
+            long lastDatetime = calendar.getTimeInMillis(); // 当前日期时间戳
+            int intervalTime = random.nextInt(60) + 1; // 间隔时间1到60分钟
+            String remarks = "测试记录 " + (month + 1) + "-" + (day); // 备注
+
+            // 创建ContentValues对象
+            ContentValues values = new ContentValues();
+            // 格式化日期
+            String formattedDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.getTime());
+            values.put("Date", formattedDate); // 将日期存储为格式化的字符串
+            values.put("Time", String.format("%02d:%02d:00", hour, minute)); // 格式化时间
+            values.put("Frequency", frequency);
+            values.put("Last_datetime", lastDatetime);
+            values.put("Interval_time", intervalTime);
+            values.put("Remarks", remarks);
+
+            // 插入数据
+            db.insert("HealthRecords", null, values);
+        }
+    }
+
 
 }

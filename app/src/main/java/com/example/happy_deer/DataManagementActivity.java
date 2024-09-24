@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.charts.ScatterChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -42,27 +44,40 @@ public class DataManagementActivity extends AppCompatActivity {
     }
 
 //    设定图表
-    private void setupChart(){
-        ArrayList<Entry> entries = new ArrayList<>();
-        // 添加数据点
-        entries.add(new Entry(0, 1));
-        entries.add(new Entry(1, 3));
-        entries.add(new Entry(2, 2));
-        entries.add(new Entry(3, 5));
-        entries.add(new Entry(4, 4));
+private void setupChart() {
+    ArrayList<Entry> entries = new ArrayList<>();
 
-        // 创建数据集
-        LineDataSet dataSet = new LineDataSet(entries, "频率数据");
-        dataSet.setColor(getResources().getColor(android.R.color.holo_blue_light));
-        dataSet.setValueTextColor(getResources().getColor(android.R.color.black));
+    // 假设你的频率数据
+    float[] frequencies = {1, 3, 2, 5, 4, 6, 7}; // 周一到周日的频率
 
-        // 创建 LineData 对象
-        LineData lineData = new LineData(dataSet);
-
-        // 设置数据到图表
-        chart.setData(lineData);
-        chart.invalidate(); // 刷新图表显示
+    for (int i = 0; i < frequencies.length; i++) {
+        entries.add(new Entry(i, frequencies[i])); // i 作为 x 值，频率作为 y 值
     }
+
+    // 创建数据集
+    LineDataSet dataSet = new LineDataSet(entries, "频率数据");
+    dataSet.setColor(getResources().getColor(android.R.color.holo_blue_light));
+    dataSet.setValueTextColor(getResources().getColor(android.R.color.black));
+
+    // 可以设置平滑曲线和其他样式
+    dataSet.setDrawCircles(true);
+    dataSet.setDrawValues(true);
+
+    // 创建 LineData 对象
+    LineData lineData = new LineData(dataSet);
+
+    // 设置数据到图表
+    chart.setData(lineData);
+
+    // 创建 X 轴标签
+    XAxis xAxis = chart.getXAxis();
+    String[] daysOfWeek = {"周一", "周二", "周三", "周四", "周五", "周六", "周日"};
+    xAxis.setValueFormatter(new IndexAxisValueFormatter(daysOfWeek));
+
+    // 刷新图表显示
+    chart.invalidate();
+}
+
 
     private void setRadarChart(){
         RadarChart radarChart = findViewById(R.id.Radar_chart);
@@ -71,9 +86,9 @@ public class DataManagementActivity extends AppCompatActivity {
         float[] monthlyFrequencies = {4, 5, 3, 7, 2, 6, 8, 5, 4, 9, 7, 6};
         String[] monthLabels = {"1月", "2月", "3月", "4月", "5月", "6月",
                 "7月", "8月", "9月", "10月", "11月", "12月"};
-        // 循环获取每个月的记录数量
+        // 循环获取每个月的记录数量                                                  注意需要设置年份否则统计数据会不一样
         for (int month = 1; month <= 12; month++) {
-            int recordCountForMonth = healthRecordManager.getRecordCountForMonth(2024, month);
+            int recordCountForMonth = healthRecordManager.getRecordCountForMonth(2023, month);
             monthlyFrequencies[month - 1] = recordCountForMonth; // 将结果存储到数组中
             Log.d("Monthly Frequency", "Number of records for " + monthLabels[month - 1] + ": " + recordCountForMonth);
         }
@@ -86,7 +101,7 @@ public class DataManagementActivity extends AppCompatActivity {
         }
 
 // 创建数据集
-        RadarDataSet dataSet = new RadarDataSet(entries, "每月频率");
+        RadarDataSet dataSet = new RadarDataSet(entries, "2023年");
         dataSet.setColor(Color.BLUE);
         dataSet.setValueTextColor(Color.BLACK);
         dataSet.setDrawFilled(true); // 可选：填充颜色
@@ -110,7 +125,7 @@ public class DataManagementActivity extends AppCompatActivity {
         entries.add(new Entry(5f, 6f));
 
         // 创建数据集
-        ScatterDataSet dataSet = new ScatterDataSet(entries, "年率g");
+        ScatterDataSet dataSet = new ScatterDataSet(entries, "年率");
         dataSet.setColor(Color.BLUE); // 设置点的颜色
         dataSet.setScatterShape(ScatterChart.ScatterShape.CIRCLE); // 设置形状
 
