@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.Nullable;
 
 public class DBOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
+
+    private static final String DATABASE_NAME = "health_records.db";
+    private static final int DATABASE_VERSION = 1;
+
     public DBOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -41,6 +45,12 @@ public class DBOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
 
+    }
+
+    public void readData() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        // 使用 db 查询数据...
+        db.close(); // 记得在操作完后关闭数据库
     }
 
 

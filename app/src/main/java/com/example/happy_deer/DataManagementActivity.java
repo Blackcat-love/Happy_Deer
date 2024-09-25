@@ -39,7 +39,7 @@ public class DataManagementActivity extends AppCompatActivity {
         chart = findViewById(R.id.chart);
         setupChart();
         setRadarChart();
-        setScatterChart();
+        setScatterChart(2023,11);
 
     }
 
@@ -94,38 +94,35 @@ private void setupChart() {
         }
 
 
-// 创建雷达条目
+        // 创建雷达条目
         List<RadarEntry> entries = new ArrayList<>();
         for (int i = 0; i < monthlyFrequencies.length; i++) {
             entries.add(new RadarEntry(monthlyFrequencies[i])); // 每个月的频率
         }
 
-// 创建数据集
+        // 创建数据集
         RadarDataSet dataSet = new RadarDataSet(entries, "2023年");
         dataSet.setColor(Color.BLUE);
         dataSet.setValueTextColor(Color.BLACK);
         dataSet.setDrawFilled(true); // 可选：填充颜色
 
-// 创建雷达数据
+        // 创建雷达数据
         RadarData radarData = new RadarData(dataSet);
         radarChart.setData(radarData);
 
-// 设置月份标签
+        // 设置月份标签
         radarChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(Arrays.asList(monthLabels)));
     }
-    
-    private void setScatterChart(){
+
+    private void setScatterChart(int year, int month) {
         ScatterChart scatterChart = findViewById(R.id.Scatter_Chart);
-        // 准备数据
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(1f, 2f)); // (x=1, y=2)
-        entries.add(new Entry(2f, 5f));
-        entries.add(new Entry(3f, 3f));
-        entries.add(new Entry(4f, 7f));
-        entries.add(new Entry(5f, 6f));
+
+        // 查询数据库中指定年月的数据
+        HealthRecordManager healthRecordManager = new HealthRecordManager(DataManagementActivity.this);
+        ArrayList<Entry> entries = healthRecordManager.getDataFromDatabase(year, month);
 
         // 创建数据集
-        ScatterDataSet dataSet = new ScatterDataSet(entries, "年率");
+        ScatterDataSet dataSet = new ScatterDataSet(entries, "频率");
         dataSet.setColor(Color.BLUE); // 设置点的颜色
         dataSet.setScatterShape(ScatterChart.ScatterShape.CIRCLE); // 设置形状
 
@@ -138,6 +135,8 @@ private void setupChart() {
         // 刷新图表
         scatterChart.invalidate(); // refresh
     }
+
+
 
     
 

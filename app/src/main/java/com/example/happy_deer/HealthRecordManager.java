@@ -6,6 +6,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.github.mikephil.charting.data.Entry;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -129,6 +131,40 @@ public int getRecordCountForMonth(int year, int month) {
         }
     }
 
+
+
+    public ArrayList<Entry> getDataFromDatabase(int year, int month) {
+        ArrayList<Entry> entries = new ArrayList<>();
+        SQLiteDatabase db = dbOpenHelper.getReadableDatabase(); // 使用 dbOpenHelper 获取数据库实例
+
+        // 将月份转换为符合 SQLite 格式的字符串（例如：'2024-09-01'）
+        String startDate = year + "-" + String.format("%02d", month) + "-01";
+        String endDate = year + "-" + String.format("%02d", month) + "-" +
+                Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        // 更新查询，使用 DATE 函数提取 Day
+        String query = "SELECT strftime('%d', Date) AS Day, Time FROM HealthRecords WHERE Date BETWEEN ? AND ?";
+        Cursor cursor = db.rawQuery(query, new String[]{startDate, endDate});
+
+        while (cursor.moveToNext()) {
+            @SuppressLint("Range") int day = cursor.getInt(cursor.getColumnIndex("Day")); // 从查询结果中获取 Day
+            @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("Time"));
+
+            // 将时间字符串转换为分钟数，计算 y 值
+            String[] timeParts = time.split(":"); // 假设时间格式为 HH:mm:ss
+            int hour = Integer.parseInt(timeParts[0]);
+            int minute = Integer.parseInt(timeParts[1]);
+            float yValue = hour * 60 + minute; // 转换为分钟
+
+            // 添加数据点
+            entries.add(new Entry(day, yValue));
+        }
+
+        cursor.close();
+        db.close(); // 关闭数据库连接
+
+        return entries;
+    }
 
 
 
