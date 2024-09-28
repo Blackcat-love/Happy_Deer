@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">快乐鹿</string>
     <string name="start_btn_text" translatable="false">开始</string>
-    <string name="Interval_time" translatable="false">距离上一次锻炼已经过了 %1$d 天 %2$d 小时 %3$d 分钟。</string>
+    <string name="Interval_time" translatable="false">自上次活动以来,经过了 %1$d 天 %2$d 小时 %3$d 分钟。</string>
     <string name="Be_ready" translatable="false">你可以做任何事</string>
     <string name="Not_ready" translatable="false">我觉得你需要休息</string>
+    <string name="First_welcome" translatable="false">欢迎使用小鹿健康小助手</string>
+    <string name="First_usBtn_introduction" translatable="false">点击按钮进行记录</string>
     <!--    activity_main_Sidebar-->
     <string name="home_text" translatable="false">家</string>
     <string name="settings_text" translatable="false">设置</string>

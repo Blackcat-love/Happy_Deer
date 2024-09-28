@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView hp;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -367,24 +368,59 @@ public static int calculateMinutesDifference(String lastDateTime, String current
                 int remainingHours = hours % 24;
                 Log.d("Last_time",last_time);
                 Log.d("now_time",now_time);
+                //                Theme判断
+                SharedPreferences ready_SharedPreferences = getSharedPreferences("theme", MODE_PRIVATE);
+                String theme_Interval_Time = ready_SharedPreferences.getString("Interval_Time", "null");
+                if (theme_Interval_Time.equals("null")){
+                    Log.i("Theme_Interval_Time","默认主题");
 //                从资源中获取字符串
-                String Interval_Time = getResources().getString(R.string.Interval_time);
-                String formattedText = String.format(Interval_Time, days, remainingHours, remainingMinutes);
-                textDistance.setText(formattedText);
-//                获取状态字符串
-                String be_ready = getResources().getString(R.string.Be_ready);
-                String not_ready = getResources().getString(R.string.Not_ready);
-                // 判断是否恢复 HP
-                if (totalMinutes >= requiredRestoreMinutes) {
-                    text_hp.setText(be_ready);
-                } else {
-                    text_hp.setText(not_ready);
+                    String Interval_Time = getResources().getString(R.string.Interval_time);
+                    String formattedText = String.format(Interval_Time, days, remainingHours, remainingMinutes);
+                    textDistance.setText(formattedText);
+                }else {
+                    Log.i("Theme_Interval_Time","检测到新主题");
+                    String formattedText = String.format(theme_Interval_Time, days, remainingHours, remainingMinutes);
+                    textDistance.setText(formattedText);
+                }
+                String theme_be_ready = ready_SharedPreferences.getString("be_ready", "null");
+                String theme_not_ready = ready_SharedPreferences.getString("not_ready", "null");
+                if (theme_be_ready.equals("null") && theme_not_ready.equals("null")){
+                    Log.i("Theme_ready","默认主题");
+                    //                获取状态字符串
+                    String be_ready = getResources().getString(R.string.Be_ready);
+                    String not_ready = getResources().getString(R.string.Not_ready);
+                    // 判断是否恢复 HP
+                    if (totalMinutes >= requiredRestoreMinutes) {
+                        text_hp.setText(be_ready);
+                    } else {
+                        text_hp.setText(not_ready);
+                    }
+                }else {
+                    Log.i("Theme_ready","检测到新主题");
+                    if (totalMinutes >= requiredRestoreMinutes) {
+                        text_hp.setText(theme_be_ready);
+                    } else {
+                        text_hp.setText(theme_not_ready);
+                    }
                 }
             }else {
                 Log.d("警告", "没有查询到数据");
                 Log.d("判断","第一次使用软件");
-                textDistance.setText("欢迎使用小鹿健康小助手");
-                text_hp.setText("点击按钮进行记录");
+                SharedPreferences sharedPreferences = getSharedPreferences("theme", MODE_PRIVATE);
+                String welcome = sharedPreferences.getString("First_welcome", "null");
+                String usBtn = sharedPreferences.getString("First_usBtn", "null");
+//                判断Theme
+                if (welcome.equals("null") && usBtn.equals("null")){
+                    Log.i("Theme_First","默认主题");
+                    String First_welcome = getResources().getString(R.string.First_welcome);
+                    String First_usBtn = getResources().getString(R.string.First_usBtn_introduction);
+                    textDistance.setText(First_welcome);
+                    text_hp.setText(First_usBtn);
+                }else {
+                    Log.i("Theme_First","检测到新主题");
+                    textDistance.setText(welcome);
+                    text_hp.setText(usBtn);
+                }
             }
         }
     }
@@ -498,12 +534,18 @@ public static int calculateMinutesDifference(String lastDateTime, String current
             if (btn_text_theme.equals("null") && distance_theme.equals("null") && hp_theme.equals("null")){
                 Log.d("MainActivity","未检测到theme，使用默认主题");
             }else {
+                Log.i("Theme_ZH","检测到新主题");
+
                 btn_start.setText(btn_text_theme);
-//                distance.setText(distance_theme);
-//                hp.setText(hp_theme);
             }
         }else {
             Log.i("MainActivity","En");
+            if (btn_text_theme.equals("null")){
+                Log.d("MainActivity","未检测到theme，使用默认主题");
+            }else {
+                Log.i("Theme_EN","检测到新主题");
+                btn_start.setText(btn_text_theme);
+            }
 
         }
         //其他信息获取
