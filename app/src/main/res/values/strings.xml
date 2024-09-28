@@ -23,4 +23,9 @@
     <string name="About_keep_text" translatable="false">“Discipline is the bridge between goals and accomplishment” \n ― Jim Rohn</string>
     <!--    activity_style-->
     <string name="Style_hint_text" translatable="false">Take effect after restart</string>
+    <!--    activity_theme-->
+    <string name="Theme_selection" translatable="false">Theme Selection</string>
+    <string name="Theme_default" translatable="false">Default Theme</string>
+    <string name="Theme_deer" translatable="false">Deer Theme</string>
+    <string name="Theme_flow" translatable="false">Flow Theme</string>
 </resources>

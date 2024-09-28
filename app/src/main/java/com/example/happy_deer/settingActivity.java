@@ -37,7 +37,8 @@ public class settingActivity extends AppCompatActivity {
         ThemeSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("当前功能开发中");
+                Intent theme = new Intent(settingActivity.this, ThemeActivity.class);
+                startActivity(theme);
             }
         });
 

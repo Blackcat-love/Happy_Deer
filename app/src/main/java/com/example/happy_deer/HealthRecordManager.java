@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.github.mikephil.charting.data.Entry;
 
@@ -83,10 +84,66 @@ public int getRecordCountForMonth(int year, int month) {
     return count;
 }
 
+    // 根据年份、月份和日期查询当前数据的数量
+    public int getRecordCountForDate(int year, int month, int day) {
+        int count = 0;
+        SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
+
+        // 格式化年份、月份和日期以便于在SQL中使用
+        String yearStr = String.valueOf(year);
+        String monthStr = String.format("%02d", month); // 确保两位数格式，例如01, 02等
+        String dayStr = String.format("%02d", day); // 确保两位数格式，例如01, 02等
+
+        // 查询语句，使用 COUNT 来获取记录数量
+        String query = "SELECT COUNT(*) FROM HealthRecords WHERE Date = ?";
+
+        // 生成查询参数
+        String[] selectionArgs = { yearStr + "-" + monthStr + "-" + dayStr };
+
+        Cursor cursor = db.rawQuery(query, selectionArgs);
+
+        if (cursor.moveToFirst()) {
+            // 获取 COUNT 的结果
+            count = cursor.getInt(0); // 第一列是 COUNT(*)
+        }
+
+        cursor.close();
+        db.close();
+        return count;
+    }
+
+    public String getCurrentDateFormatted() {
+        // 获取当前日期和时间
+        Date currentDate = new Date();
+
+        // 定义日期格式
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+        // 格式化当前日期
+        return dateFormat.format(currentDate);
+    }
+
+    public int[] getCurrentDateArray() {
+        // 获取当前格式化日期
+        String currentDateFormatted = getCurrentDateFormatted();
+
+        // 解析日期字符串，假设格式为 yyyy-MM-dd
+        String[] dateParts = currentDateFormatted.split("-");
+
+        // 创建一个整数数组以存储年、月、日
+        int[] dateArray = new int[3];
+
+        // 将解析的年、月、日转换为整数并存储到数组中
+        dateArray[0] = Integer.parseInt(dateParts[0]); // 年
+        dateArray[1] = Integer.parseInt(dateParts[1]); // 月
+        dateArray[2] = Integer.parseInt(dateParts[2]); // 日
+
+        return dateArray; // 返回包含年、月、日的数组
+    }
 
 
     // 方法：根据输入的日期字符串返回星期几
-    public static String getDayOfWeek(String dateString) {
+    public String getDayOfWeek(String dateString) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         try {
             // 解析输入的日期字符串
@@ -144,24 +201,37 @@ public int getRecordCountForMonth(int year, int month) {
 
         // 更新查询，使用 DATE 函数提取 Day
         String query = "SELECT strftime('%d', Date) AS Day, Time FROM HealthRecords WHERE Date BETWEEN ? AND ?";
-        Cursor cursor = db.rawQuery(query, new String[]{startDate, endDate});
+        Cursor cursor = null;
 
-        while (cursor.moveToNext()) {
-            @SuppressLint("Range") int day = cursor.getInt(cursor.getColumnIndex("Day")); // 从查询结果中获取 Day
-            @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("Time"));
+        try {
+            cursor = db.rawQuery(query, new String[]{startDate, endDate});
 
-            // 将时间字符串转换为分钟数，计算 y 值
-            String[] timeParts = time.split(":"); // 假设时间格式为 HH:mm:ss
-            int hour = Integer.parseInt(timeParts[0]);
-            int minute = Integer.parseInt(timeParts[1]);
-            float yValue = hour * 60 + minute; // 转换为分钟
+            while (cursor.moveToNext()) {
+                @SuppressLint("Range") int day = cursor.getInt(cursor.getColumnIndex("Day")); // 从查询结果中获取 Day
+                @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("Time"));
 
-            // 添加数据点
-            entries.add(new Entry(day, yValue));
+                // 将时间字符串转换为分钟数，计算 y 值
+                String[] timeParts = time.split(":"); // 假设时间格式为 HH:mm:ss
+                if (timeParts.length >= 2) { // 确保有足够的部分
+                    int hour = Integer.parseInt(timeParts[0]);
+                    int minute = Integer.parseInt(timeParts[1]);
+                    float yValue = hour * 60 + minute; // 转换为分钟
+
+                    // 添加数据点
+                    entries.add(new Entry(day, yValue));
+                } else {
+                    // 处理时间格式不正确的情况
+                    Log.e("DatabaseError", "时间格式不正确: " + time);
+                }
+            }
+        } catch (Exception e) {
+            Log.e("DatabaseError", "查询数据时出错: " + e.getMessage());
+        } finally {
+            if (cursor != null) {
+                cursor.close(); // 关闭 Cursor
+            }
+            db.close(); // 关闭数据库连接
         }
-
-        cursor.close();
-        db.close(); // 关闭数据库连接
 
         return entries;
     }

@@ -484,8 +484,26 @@ public static int calculateMinutesDifference(String lastDateTime, String current
     private void load_main_text(){
         String userLanguage = GetBrotherInformationHelper.getUserLanguage(MainActivity.this);
         Log.i("MainActivity","UserLanguage:" + userLanguage );
+        SharedPreferences sharedPreferences = getSharedPreferences("theme", MODE_PRIVATE);
+        String btn_text_theme = sharedPreferences.getString("btn_text", "null");
+        String distance_theme = sharedPreferences.getString("main_distance", "null");
+        String hp_theme = sharedPreferences.getString("main_hp", "null");
 //        判断加载文本 此代码是为了后续可以自定义设置文本内容
         if (userLanguage.equals("zh")){
+            // 使用 Log 输出
+            Log.d("MainActivity", "Button Text Theme: " + btn_text_theme);
+            Log.d("MainActivity", "Main Distance Theme: " + distance_theme);
+            Log.d("MainActivity", "Main HP Theme: " + hp_theme);
+
+            if (btn_text_theme.equals("null") && distance_theme.equals("null") && hp_theme.equals("null")){
+                Log.d("MainActivity","未检测到theme，使用默认主题");
+            }else {
+                btn_start.setText(btn_text_theme);
+//                distance.setText(distance_theme);
+//                hp.setText(hp_theme);
+            }
+        }else {
+            Log.i("MainActivity","En");
 
         }
         //其他信息获取

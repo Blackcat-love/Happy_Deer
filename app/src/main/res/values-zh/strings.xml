@@ -22,4 +22,9 @@
     <string name="About_keep_text" translatable="false">“目标的实现依赖于有效的自律” \n ― Jim Rohn</string>
     <!--    activity_style-->
     <string name="Style_hint_text" translatable="false">重启后生效</string>
+    <!--    activity_theme-->
+    <string name="Theme_selection" translatable="false">主题选择</string>
+    <string name="Theme_default" translatable="false">默认主题</string>
+    <string name="Theme_deer" translatable="false">鹿主题</string>
+    <string name="Theme_flow" translatable="false">心流主题</string>
 </resources>

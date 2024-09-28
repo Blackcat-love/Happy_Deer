@@ -332,7 +332,7 @@ public void displayAllRecords(TextView textView) {
         Calendar calendar = Calendar.getInstance();
 
         // 每个月的日期范围
-        int year = 2023; // 可以根据需要设置年份
+        int year = 2024; // 可以根据需要设置年份
         int totalRecords = 100; // 总共希望生成的记录数
 
         for (int month = 0; month < 12; month++) {
