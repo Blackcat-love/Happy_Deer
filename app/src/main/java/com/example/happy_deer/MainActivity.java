@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView distance;
     private TextView hp;
 
-
+    private Toast currentToast; // 声明一个 Toast 对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         main_sidbar_bg = findViewById(R.id.main_sidbar_bg);
         distance = findViewById(R.id.text_distance);
         hp = findViewById(R.id.text_hp);
-
 
         // 执行第一次检查
         checkAndUpdateData();
@@ -126,6 +125,21 @@ public class MainActivity extends AppCompatActivity {
                         btn_start.setEnabled(false);
                         btn_start.setText("今日已锻炼");
                         checkAndUpdateData();
+                        ApiManager.GetJiTang(new ApiManager.ApiCallback() {
+                            @Override
+                            public void onSuccess(String result) {
+                                Log.i("JiTang",result);
+                                runOnUiThread(() -> {
+                                    // 显示 Toast
+                                    showToast(result);
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Exception e) {
+
+                            }
+                        });
                     } else {
                         // 没有数据的处理逻辑
                         Log.d("警告", "没有查询到数据");
@@ -550,6 +564,17 @@ public static int calculateMinutesDifference(String lastDateTime, String current
         }
         //其他信息获取
         Log.i("MainActivity","Android系统版本:" + GetBrotherInformationHelper.getAndroidVersion() + "AndroidSDK:" + GetBrotherInformationHelper.getSdkVersion() + "Android厂家型号:" + GetBrotherInformationHelper.getDeviceManufacturerAndModel());
+    }
+
+
+    private void showToast(String message) {
+        // 如果当前有 Toast 在显示，取消它
+        if (currentToast != null) {
+            currentToast.cancel(); // 取消当前的 Toast
+        }
+        // 创建新 Toast
+        currentToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        currentToast.show(); // 显示新 Toast
     }
 
 
