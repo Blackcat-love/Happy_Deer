@@ -53,9 +53,11 @@ public class UpdateApp {
 
             // 获取 "tag_name" 的值
             String tagName = jsonObject.getString("tag_name");
+            String name = jsonObject.getString("name");
 
             // 输出结果
             Log.i("TAG", "Tag Name: " + tagName);
+            Log.i("TAG","Version Name:" + name);
         } catch (Exception e) {
             e.printStackTrace();
         }

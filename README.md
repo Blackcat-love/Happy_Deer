@@ -39,7 +39,7 @@ Please read http://www.catb.org/~esr/faqs/smart-questions.html Make your questio
 
 ## To be completed plan
 - [x] Added developer page.
-- [ ] Add theme function to switch between different themes.
+- [x] Add theme function to switch between different themes.
 - [ ] Add default modes, such as individual mode and couple mode.
 - [ ] Multi-language support.
 - [ ] Cache Cleaning.
