@@ -10,8 +10,8 @@ android {
         applicationId = "com.example.happy_deer"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.3"
+        versionCode = 2
+        versionName = "1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

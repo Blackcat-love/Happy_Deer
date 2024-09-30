@@ -237,6 +237,47 @@ public int getRecordCountForMonth(int year, int month) {
     }
 
 
+//    获取20个数据内的平均时间
+public String getAverageIntervalTime() {
+    String result = "";
+
+    SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
+    // 查询最近的20个记录的 Interval_time
+    String query = "SELECT Interval_time FROM HealthRecords ORDER BY Last_datetime DESC LIMIT 20";
+    Cursor cursor = db.rawQuery(query, null);
+
+    int totalMinutes = 0;
+    int count = 0;
+
+    if (cursor.moveToFirst()) {
+        do {
+            @SuppressLint("Range") int intervalTime = cursor.getInt(cursor.getColumnIndex("Interval_time"));
+            totalMinutes += intervalTime;
+            count++;
+        } while (cursor.moveToNext());
+    }
+
+    cursor.close();
+
+    if (count > 0) {
+        // 计算平均时间
+        int averageMinutes = totalMinutes / count;
+
+        // 转换为小时和分钟
+        int hours = averageMinutes / 60;
+        int minutes = averageMinutes % 60;
+
+        if (hours > 0) {
+            result = String.format("%d小时%d分钟", hours, minutes);
+        } else {
+            result = String.format("%d分钟", minutes);
+        }
+    }
+
+    return result;
+}
+
+
 
 
 }

@@ -18,9 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
 
-    <com.github.mikephil.charting.charts.ScatterChart
-        android:id="@+id/Scatter_Chart"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="220dp"/>
+        android:layout_height="match_parent"
+        android:text="hello"
+        android:id="@+id/Average_time"
+        android:layout_margin="30dp"
+        android:textSize="20dp"/>
+
+
 
 </LinearLayout>

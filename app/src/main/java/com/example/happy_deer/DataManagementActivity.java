@@ -3,25 +3,20 @@ package com.example.happy_deer;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.RadarChart;
-import com.github.mikephil.charting.charts.ScatterChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.data.RadarEntry;
-import com.github.mikephil.charting.data.ScatterData;
-import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.text.SimpleDateFormat;
@@ -42,6 +37,7 @@ public class DataManagementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_management);
 
         chart = findViewById(R.id.chart);
+        TextView Average_time = findViewById(R.id.Average_time);
 
         // 获取当前时间
         Calendar calendar = Calendar.getInstance();
@@ -56,6 +52,12 @@ public class DataManagementActivity extends AppCompatActivity {
         setupChart();
         setRadarChart(year);
 //        setScatterChart(year, month); // 将年和月作为参数传递
+
+
+//        获取最近20个数据内的平均值
+        HealthRecordManager healthRecordManager = new HealthRecordManager(DataManagementActivity.this);
+        String averageIntervalTime = healthRecordManager.getAverageIntervalTime();
+        Average_time.setText("最近的平均恢复时间:" + averageIntervalTime);
 
     }
 
@@ -216,54 +218,6 @@ private void setupChart() {
         radarChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(Arrays.asList(monthLabels)));
     }
 
-    private void setScatterChart(int year, int month) {
-        ScatterChart scatterChart = findViewById(R.id.Scatter_Chart);
-
-        // 查询数据库中指定年月的数据
-        HealthRecordManager healthRecordManager = new HealthRecordManager(DataManagementActivity.this);
-        ArrayList<Entry> entries = healthRecordManager.getDataFromDatabase(year, month);
-
-        Log.d("DataEntries", "Entries: " + entries.toString());
-
-        if (entries.size() == 0) {
-            Log.e("ChartError", "没有可绘制的数据");
-            return; // 处理没有数据的情况
-        }
-
-        // 验证每个 Entry 的有效性
-        for (Entry entry : entries) {
-            if (entry.getX() < 0 || entry.getY() < 0) {
-                Log.e("ChartError", "无效数据点: " + entry.toString());
-                return; // 处理无效数据的情况
-            }
-        }
-
-        // 创建数据集
-        ScatterDataSet dataSet = new ScatterDataSet(entries, "年份:" + year + "月份:" + month);
-        dataSet.setColor(Color.BLUE); // 设置点的颜色
-        dataSet.setScatterShape(ScatterChart.ScatterShape.CIRCLE); // 设置形状
-
-        // 创建 ScatterData
-        ScatterData scatterData = new ScatterData(dataSet);
-
-        // 将数据设置到 ScatterChart
-        scatterChart.setData(scatterData);
-
-        // 设置 X 轴标签
-        XAxis xAxis = scatterChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM); // 设置 X 轴位置
-        xAxis.setDrawGridLines(false); // 如果不需要网格线，可以关闭
-
-        // 设置 Y 轴
-        YAxis yAxis = scatterChart.getAxisLeft();
-        yAxis.setDrawGridLines(true); // 根据需要设置网格线
-
-        // 如果需要，您可以关闭右侧 Y 轴
-        scatterChart.getAxisRight().setEnabled(false);
-
-        // 刷新图表
-        scatterChart.invalidate(); // refresh
-    }
 
 
 

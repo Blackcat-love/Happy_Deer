@@ -1,64 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/about_text"
-        android:textSize="26sp"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+    <!-- Logo 作为背景，放置在右下角 -->
+    <ImageView
+        android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:src="@drawable/logo"
+    android:layout_gravity="bottom|end"
+        android:layout_margin="29dp"
+    android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/About_Author"
-        android:textSize="16sp"
-        android:textColor="#000000"
-        android:layout_marginTop="16dp"/>
+    <!-- 其他组件在上层 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <TextView
-        android:id="@+id/copyright"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/About_Copyright"
-        android:textSize="16sp"
-        android:textColor="#000000"
-        android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_text"
+            android:textSize="26sp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/link_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/About_OP_source_Description"
-        android:autoLink="web"
-        android:textSize="16sp"
-        android:textColor="#000000"
-        android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/About_Author"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"/>
 
-    <TextView
-        android:id="@+id/Feelings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/About_Feelings"
-        android:autoLink="web"
-        android:textSize="16sp"
-        android:textColor="#707070"
-        android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/About_Copyright"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/About_keep_text"
-        android:textSize="13sp"
-        android:textColor="#707070"
-        android:layout_marginTop="430dp"/>
+        <TextView
+            android:id="@+id/link_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/About_OP_source_Description"
+            android:autoLink="web"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/Feelings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/About_Feelings"
+            android:autoLink="web"
+            android:textSize="16sp"
+            android:textColor="#707070"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/About_keep_text"
+            android:textSize="13sp"
+            android:textColor="#707070"
+            android:layout_marginTop="430dp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

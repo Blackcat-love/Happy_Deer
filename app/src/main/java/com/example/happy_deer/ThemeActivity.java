@@ -43,9 +43,9 @@ public class ThemeActivity extends AppCompatActivity {
                 SharedPreferences.Editor edit = sharedPreferences.edit();
 //                String welcome = sharedPreferences.getString("First_welcome", "null");
 //                String usBtn = sharedPreferences.getString("First_usBtn", "null");
-                edit.putString("First_welcome","欢迎使用开撸小助手");
-                edit.putString("btn_text","开撸");
-                edit.putString("First_usBtn","点击按钮记录开撸时光");
+                edit.putString("First_welcome","欢迎使用HappyDeer");
+                edit.putString("btn_text","开冲");
+                edit.putString("First_usBtn","点击按钮记录开冲时光");
                 edit.putString("be_ready","恢复完毕，随时开冲");
                 edit.putString("not_ready","休息一会吧，哥们");
                 edit.putString("Interval_Time","距离上一次鹿，已经过了 %1$d 天 %2$d 小时 %3$d 分钟。");
