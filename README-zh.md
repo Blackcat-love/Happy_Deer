@@ -1,6 +1,10 @@
 ## 针对安卓系统的单个任务时间管理项目
 
 <p align="center">
+ <img src="docs_assets/default.jpg" alt="logo" width="240px">
+</p>
+
+<p align="center">
     <img src="docs_assets/Java.png" alt="Java" width="120px"/>
     <img src="docs_assets/Android.png" alt="Android" width="120px">
     <img src="docs_assets/GitHub.png" alt="Github" width="120px">
@@ -46,7 +50,7 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 - [ ] 一键分享
 
 ## 版本更新
-### [1.0.2] - 2024-10-1
+### [1.4.2] - 2024-10-1
 - **Added**: 添加了新的主题设置和图标
 - **Optimized**: 重新构建了底层的TextView加载代码，方便自定义
 - **Fixed** 修复了部分页面背景黑色的问题

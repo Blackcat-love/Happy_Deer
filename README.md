@@ -1,6 +1,10 @@
 ## SingleTask Time Management Project for Android (STAMP-A)
 
 <p align="center">
+ <img src="docs_assets/default.jpg" alt="logo" width="240px">
+</p>
+
+<p align="center">
     <img src="docs_assets/Java.png" alt="Java" width="120px"/>
     <img src="docs_assets/Android.png" alt="Android" width="120px">
     <img src="docs_assets/GitHub.png" alt="Github" width="120px">
@@ -46,6 +50,11 @@ Please read http://www.catb.org/~esr/faqs/smart-questions.html Make your questio
 - [ ] One-click sharing.
 
 ## Version Update
+
+### [1.4.2] - 2024-10-1
+- **Added**: Added new theme settings and icons
+- **Optimized**: Rebuilt the underlying TextView loading code for easy customization
+- **Fixed** Fixed the issue where some pages had black backgrounds
 
 ### [1.0.2] - 2024-09-19
 - **Added**: Added new style settings Threshold time Home page background settings Sidebar background settings
