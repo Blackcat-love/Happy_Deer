@@ -46,6 +46,10 @@ git clone https://github.com/Blackcat-love/Happy_Deer.git
 - [ ] 一键分享
 
 ## 版本更新
+### [1.0.2] - 2024-10-1
+- **Added**: 添加了新的主题设置和图标
+- **Optimized**: 重新构建了底层的TextView加载代码，方便自定义
+- **Fixed** 修复了部分页面背景黑色的问题
 
 ### [1.0.2] - 2024-09-19
 - **Added**: 添加了新的样式设置 阈值时间 主页背景设置 侧边栏背景设置

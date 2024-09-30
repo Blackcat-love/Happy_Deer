@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThemeActivity">
+    tools:context=".ThemeActivity"
+    android:background="@android:color/white">
 
     <!-- 标题栏 -->
     <TextView
