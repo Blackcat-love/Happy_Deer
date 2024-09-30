@@ -85,21 +85,13 @@ public int getRecordCountForMonth(int year, int month) {
 }
 
     // 根据年份、月份和日期查询当前数据的数量
-    public int getRecordCountForDate(int year, int month, int day) {
+    public int getRecordCountForDate(String date) {
         int count = 0;
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
 
-        // 格式化年份、月份和日期以便于在SQL中使用
-        String yearStr = String.valueOf(year);
-        String monthStr = String.format("%02d", month); // 确保两位数格式，例如01, 02等
-        String dayStr = String.format("%02d", day); // 确保两位数格式，例如01, 02等
-
         // 查询语句，使用 COUNT 来获取记录数量
         String query = "SELECT COUNT(*) FROM HealthRecords WHERE Date = ?";
-
-        // 生成查询参数
-        String[] selectionArgs = { yearStr + "-" + monthStr + "-" + dayStr };
-
+        String[] selectionArgs = new String[]{date}; // 将 date 放入数组中
         Cursor cursor = db.rawQuery(query, selectionArgs);
 
         if (cursor.moveToFirst()) {
@@ -109,6 +101,7 @@ public int getRecordCountForMonth(int year, int month) {
 
         cursor.close();
         db.close();
+        Log.i("HealthRecordManager","数据数量:" + count);
         return count;
     }
 
