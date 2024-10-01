@@ -5,10 +5,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.util.Log;
-
 import com.github.mikephil.charting.data.Entry;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -230,45 +233,95 @@ public int getRecordCountForMonth(int year, int month) {
     }
 
 
-//    获取20个数据内的平均时间
-public String getAverageIntervalTime() {
-    String result = "";
+    //    获取20个数据内的平均时间
+    public String getAverageIntervalTime() {
+        String result = "";
 
-    SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
-    // 查询最近的20个记录的 Interval_time
-    String query = "SELECT Interval_time FROM HealthRecords ORDER BY Last_datetime DESC LIMIT 20";
-    Cursor cursor = db.rawQuery(query, null);
+        SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
+        // 查询最近的20个记录的 Interval_time
+        String query = "SELECT Interval_time FROM HealthRecords ORDER BY Last_datetime DESC LIMIT 20";
+        Cursor cursor = db.rawQuery(query, null);
 
-    int totalMinutes = 0;
-    int count = 0;
+        int totalMinutes = 0;
+        int count = 0;
 
-    if (cursor.moveToFirst()) {
-        do {
-            @SuppressLint("Range") int intervalTime = cursor.getInt(cursor.getColumnIndex("Interval_time"));
-            totalMinutes += intervalTime;
-            count++;
-        } while (cursor.moveToNext());
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") int intervalTime = cursor.getInt(cursor.getColumnIndex("Interval_time"));
+                totalMinutes += intervalTime;
+                count++;
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+
+        if (count > 0) {
+            // 计算平均时间
+            int averageMinutes = totalMinutes / count;
+
+            // 转换为小时和分钟
+            int hours = averageMinutes / 60;
+            int minutes = averageMinutes % 60;
+
+            if (hours > 0) {
+                result = String.format("%d小时%d分钟", hours, minutes);
+            } else {
+                result = String.format("%d分钟", minutes);
+            }
+        }
+
+        return result;
     }
 
-    cursor.close();
+    public void exportDatabaseToCSV() {
+        SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM HealthRecords", null);
 
-    if (count > 0) {
-        // 计算平均时间
-        int averageMinutes = totalMinutes / count;
+        StringBuilder csvData = new StringBuilder();
 
-        // 转换为小时和分钟
-        int hours = averageMinutes / 60;
-        int minutes = averageMinutes % 60;
+        // 获取列名
+        for (int i = 0; i < cursor.getColumnCount(); i++) {
+            csvData.append(cursor.getColumnName(i)).append(",");
+        }
+        csvData.setLength(csvData.length() - 1); // 移除最后一个逗号
+        csvData.append("\n");
 
-        if (hours > 0) {
-            result = String.format("%d小时%d分钟", hours, minutes);
-        } else {
-            result = String.format("%d分钟", minutes);
+        // 获取数据并构建CSV内容
+        while (cursor.moveToNext()) {
+            for (int i = 0; i < cursor.getColumnCount(); i++) {
+                csvData.append(cursor.getString(i)).append(",");
+            }
+            csvData.setLength(csvData.length() - 1); // 移除最后一个逗号
+            csvData.append("\n");
+        }
+
+        cursor.close();
+        db.close();
+
+        // 将CSV内容写入文件
+        try {
+            // 在 Downloads 目录下创建 MyApp 子文件夹
+            File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            File appFolder = new File(downloadsDir, "MyApp");
+
+            // 确保文件夹存在
+            if (!appFolder.exists()) {
+                appFolder.mkdirs();
+            }
+
+            // 创建 HealthRecords.csv 文件
+            File file = new File(appFolder, "HealthRecords.csv");
+
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(csvData.toString().getBytes());
+            fos.close();
+            Log.d("HealthRecordManager","导出成功: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("HealthRecordManager","导出失败");
+
         }
     }
-
-    return result;
-}
 
 
 
