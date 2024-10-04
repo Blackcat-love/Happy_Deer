@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -82,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
 
         //文字加载
         load_main_text();
+
+        //版本检查
+        CheckForAppVersion();
 
         // 每60秒执行一次
         runnable = new Runnable() {
@@ -576,6 +581,41 @@ public static int calculateMinutesDifference(String lastDateTime, String current
         currentToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
         currentToast.show(); // 显示新 Toast
     }
+
+    private void CheckForAppVersion(){
+        // 获取应用的包管理器
+        PackageManager packageManager = getPackageManager();
+        String packageName = getPackageName();
+        // 获取应用的信息
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+            String versionName = packageInfo.versionName; // 获取APP版本
+//            获取远程仓库最新版本
+            UpdateApp.fetchJsonData(new UpdateApp.VersionCallback() {
+                @Override
+                public void onVersionFetched(String version) {
+                    // 在 versionName 前添加 'v'
+                    String prefixedVersionName = "v" + versionName;
+
+                    Log.i("MainActivity", "当前APP版本:" + prefixedVersionName + " 远程仓库版本:" + version);
+//                    对比判断
+                    if (version.equals(prefixedVersionName)){
+                        Log.d("CheckForAppVersion","当前已是最新版本");
+                    }else {
+                        Log.d("CheckForAppVersion","需要更新");
+
+                    }
+                }
+            });
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e("Error","无法获取APP信息");
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
 
 
 }

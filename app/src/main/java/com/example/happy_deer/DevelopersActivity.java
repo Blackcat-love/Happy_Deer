@@ -152,7 +152,12 @@ public class DevelopersActivity extends AppCompatActivity {
         GetUpdateApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateApp.fetchJsonData();
+                UpdateApp.fetchJsonData(new UpdateApp.VersionCallback() {
+                    @Override
+                    public void onVersionFetched(String version) {
+
+                    }
+                });
             }
         });
 
