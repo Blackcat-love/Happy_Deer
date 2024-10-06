@@ -24,6 +24,12 @@
     <string name="About_keep_text" translatable="false">“目标的实现依赖于有效的自律” \n ― Jim Rohn</string>
     <!--    activity_style-->
     <string name="Style_hint_text" translatable="false">重启后生效</string>
+    <string name="Style_Set_home_bg" translatable="false">上传背景图片</string>
+    <string name="Style_Set_sidebar_bg" translatable="false">上传侧栏背景图片</string>
+    <string name="Style_Adjust_time_linit" translatable="false">修改时间阈值</string>
+    <string name="Style_Set_Day" translatable="false">%1$d 天</string>
+    <string name="Style_Set_hours" translatable="false">%1$d 小时</string>
+    <string name="Style_Set_minutes" translatable="false">%1$d 分钟</string>
     <!--    activity_theme-->
     <string name="Theme_selection" translatable="false">主题选择</string>
     <string name="Theme_default" translatable="false">默认主题</string>

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -49,6 +50,7 @@ public class StyleActivity extends AppCompatActivity {
         textHours = findViewById(R.id.text_hours);
         textMinutes = findViewById(R.id.text_minutes);
         TextView SetTime = findViewById(R.id.Set_Time);
+        Resources resources = getResources();
 
 //        创建时加载
         Log.i("StyleActivity","读取配置信息");
@@ -74,7 +76,8 @@ public class StyleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 showNumberPicker("天数", 0, 30, (number) -> {
                     days = number;
-                    textDays.setText("天数: " + days);
+                    String string_Day = resources.getString(R.string.Style_Set_Day);
+                    textDays.setText(String.format(string_Day,days));
                 });
             }
         });
@@ -272,9 +275,13 @@ public class StyleActivity extends AppCompatActivity {
         String share_Days = sharedPreferences.getString("Days", "0");
         String share_Hours = sharedPreferences.getString("Hours", "0");
         String share_Minutes = sharedPreferences.getString("Minutes", "0");
-        textDays.setText("天数: " + share_Days);
-        textHours.setText("小时: " + share_Hours);
-        textMinutes.setText("分钟: " + share_Minutes);
+        Resources resources = getResources();
+        String string_day = resources.getString(R.string.Style_Set_Day);
+        String string_hours = resources.getString(R.string.Style_Set_hours);
+        String string_minutes = resources.getString(R.string.Style_Set_minutes);
+        textDays.setText(String.format(string_day,Integer.parseInt(share_Days)));
+        textHours.setText(String.format(string_hours,Integer.parseInt(share_Hours)));
+        textMinutes.setText(String.format(string_minutes,Integer.parseInt(share_Minutes)));
     }
 
 }

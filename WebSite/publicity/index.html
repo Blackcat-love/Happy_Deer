@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyDeer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .feature {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .feature::before {
+            content: '✓';
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .download-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .language-btn {
+            background-color: #ecf0f1;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        .language-btn:hover, .language-btn.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .security-notice, .author-info, .contact-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button class="language-btn active" data-lang="en">English</button>
+        <button class="language-btn" data-lang="cn">Chinese</button>
+        <button class="language-btn" data-lang="jp">Japanese</button>
+        <button class="language-btn" data-lang="zhyue">粤</button>
+    </div>
+    <div class="container">
+        <img src="default.jpg" alt="MyApp Icon" class="app-icon">
+        <h1 id="app-title">Welcome to HappyDeer</h1>
+        
+        <section>
+            <h2 id="about-title">About</h2>
+            <p id="about-content">
+                HappyDeer is an app for recording and analyzing personal "fun" durations. Users can easily log the time spent on each session and generate statistical charts to understand their behavior patterns. These insights help enhance self-discipline and promote a more restrained lifestyle. Whether setting goals or optimizing life, HappyDeer is your friendly companion.
+            </p>
+        </section>
+        
+        <section>
+            <h2 id="features-title">Features and Functions</h2>
+            <ul id="features-list">
+                <li class="feature" style="animation-delay: 0.2s;">HappyDeer offers all features at no cost.</li>
+                <li class="feature" style="animation-delay: 0.4s;">All data is stored locally, ensuring privacy.</li>
+                <li class="feature" style="animation-delay: 0.6s;">As an open-source app, it allows for safe usage.</li>
+                <li class="feature" style="animation-delay: 0.8s;">Ongoing optimizations for a better experience.</li>
+                <li class="feature" style="animation-delay: 1s;">Installation package is only 14MB, taking up minimal space.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2 id="cta-title">Ready to Get Started?</h2>
+            <p id="cta-content">Experience the power of HappyDeer today. Click the button below to download and start your journey towards increased productivity and success.</p>
+            <a href="#" class="download-btn" id="download-btn">Download the latest version</a>
+        </section>
+
+        <section class="security-notice">
+            <h2 id="security-title">Security Statement</h2>
+            <p id="security-content">This software is open source and licensed under the GPL-2.0 license. While we strive to provide secure and reliable code, we cannot guarantee absolute safety in all environments. Users assume all risks associated with using this software, and we accept no liability. Please ensure that you take appropriate security measures to protect your system and data.</p>
+        </section>
+
+        <section class="author-info">
+            <h2 id="author-title">About the Author</h2>
+            <p id="author-content">This software is currently developed and maintained by me as an individual. Aware of my limited skills, I strive to provide an application that is free from intrusive ads, respects user privacy, and is well-optimized. My goal is to focus on essential features while maintaining high performance. If you're willing, we can work together to enhance this project and make it even better.</p>
+        </section>
+
+        <section class="contact-info">
+            <h2 id="contact-title">Contact & Support</h2>
+            <p id="contact-content">Encountered a problem or have a suggestion? We'd love to hear from you! You can reach us through:</p>
+            <ul id="contact-list">
+                <li>Email: nanafree@tutamail.com</li>
+                <li>Twitter: @nana_1574</li>
+                <li>GitHub: github.com/myapp/issues</li>
+            </ul>
+            <p id="contribute-content">Want to contribute? Join our open-source community on GitHub and help us make HappyDeer even better!</p>
+        </section>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                appTitle: "Welcome to HappyDeer",
+                aboutTitle: "About",
+                aboutContent: "HappyDeer is an app for recording and analyzing personal \"fun\" durations. Users can easily log the time spent on each session and generate statistical charts to understand their behavior patterns. These insights help enhance self-discipline and promote a more restrained lifestyle. Whether setting goals or optimizing life, HappyDeer is your friendly companion.",
+                featuresTitle: "Features and Functions",
+                features: [
+                    "HappyDeer offers all features at no cost.",
+                    "All data is stored locally, ensuring privacy.",
+                    "As an open-source app, it allows for safe usage.",
+                    "Ongoing optimizations for a better experience.",
+                    "Installation package is only 14MB, taking up minimal space.",
+                ],
+                ctaTitle: "Ready to Get Started?",
+                ctaContent: "Experience the power of HappyDeer today. Click the button below to download and start your journey towards increased productivity and success.",
+                downloadBtn: "Download the latest version",
+                securityTitle: "Security Statement",
+                securityContent: "This software is open source and licensed under the GPL-2.0 license. While we strive to provide secure and reliable code, we cannot guarantee absolute safety in all environments. Users assume all risks associated with using this software, and we accept no liability. Please ensure that you take appropriate security measures to protect your system and data.",
+                authorTitle: "About the Author",
+                authorContent: "This software is currently developed and maintained by me as an individual. Aware of my limited skills, I strive to provide an application that is free from intrusive ads, respects user privacy, and is well-optimized. My goal is to focus on essential features while maintaining high performance. If you're willing, we can work together to enhance this project and make it even better.",
+                contactTitle: "Contact & Support",
+                contactContent: "Encountered a problem or have a suggestion? We'd love to hear from you! You can reach us through:",
+                contactList: [
+                    "Email: nanafree@tutamail.com",
+                    "Twitter: @nana_1574",
+                    "GitHub: github.com/myapp/issues"
+                ],
+                contributeContent: "Want to contribute? Join our open-source community on GitHub and help us make HappyDeer even better!"
+            },
+            cn: {
+                    appTitle: "欢迎使用 HappyDeer",
+                    aboutTitle: "关于",
+                    aboutContent: "HappyDeer 是一款用于记录和分析个人“乐趣”时长的应用。用户可以轻松记录每次会话的时间，并生成统计图表以理解其行为模式。这些洞察有助于增强自律，促进更克制的生活方式。无论是设定目标还是优化生活，HappyDeer 都是你亲密的伴侣。",
+                    featuresTitle: "功能与特性",
+                    features: [
+                        "HappyDeer 提供所有功能且完全免费。",
+                        "所有数据均保存在本地，确保隐私。",
+                        "作为一款开源应用，它允许安全使用。",
+                        "持续优化以提升体验。",
+                        "安装包仅 14MB，占用空间极小。"
+                    ],
+                    ctaTitle: "准备开始吗？",
+                    ctaContent: "今天就来体验 HappyDeer 的强大。点击下面的按钮下载，开始你的高效与成功之旅。",
+                    downloadBtn: "下载最新版本",
+                    securityTitle: "安全声明",
+                    securityContent: "该软件为开源软件，采用 GPL-2.0 许可证。尽管我们努力提供安全可靠的代码，但我们无法保证在所有环境中的绝对安全。用户自行承担使用本软件所带来的所有风险，我们不承担任何责任。请确保采取适当的安全措施以保护您的系统和数据。",
+                    authorTitle: "关于作者",
+                    authorContent: "该软件目前由我个人独立开发和维护。由于我的能力有限，我始终希望能提供一个不会被广告充斥、保护个人隐私且优化良好的应用。我的目标是专注于重要功能，同时保持高性能。如果你愿意，我们可以一起努力，共同提升这个项目，让它变得更好。",
+                    contactTitle: "联系与支持",
+                    contactContent: "遇到问题或有建议吗？我们很想听到你的声音！你可以通过以下方式联系我们：",
+                    contactList: [
+                        "电子邮件：nanafree@tutamail.com",
+                        "推特：@nana_1574",
+                        "GitHub：github.com/myapp/issues"
+                    ],
+                    contributeContent: "想要贡献？加入我们的开源社区，在 GitHub 上帮助我们让 HappyDeer 更加出色！"
+                },
+            jp: {
+                    appTitle: "HappyDeerへようこそ",
+                    aboutTitle: "について",
+                    aboutContent: "HappyDeerは、個人の「楽しみ」の時間を記録し分析するためのアプリです。ユーザーは各セッションに費やした時間を簡単に記録し、行動パターンを理解するための統計グラフを生成できます。これらの洞察は自己規律を高め、より抑制的なライフスタイルを促進するのに役立ちます。目標設定や生活の最適化にかかわらず、HappyDeerはあなたの親しい仲間です。",
+                    featuresTitle: "機能と特徴",
+                    features: [
+                        "HappyDeerはすべての機能を無料で提供します。",
+                        "すべてのデータはローカルに保存され、プライバシーを保護します。",
+                        "オープンソースアプリとして、安全に使用できます。",
+                        "体験を向上させるために継続的に最適化されています。",
+                        "インストールパッケージはわずか14MBで、非常に小さいです。"
+                    ],
+                    ctaTitle: "始める準備はできましたか？",
+                    ctaContent: "今日、HappyDeerの力を体験してください。下のボタンをクリックしてダウンロードし、生産性と成功への旅を始めましょう。",
+                    downloadBtn: "最新バージョンをダウンロード",
+                    securityTitle: "安全声明",
+                    securityContent: "このソフトウェアはオープンソースで、GPL-2.0ライセンスの下で配布されています。安全で信頼性のあるコードを提供するよう努めていますが、すべての環境で絶対的な安全を保証することはできません。ユーザーはこのソフトウェアの使用に伴うリスクを全て負い、責任を負いません。システムとデータを保護するために適切なセキュリティ対策を講じてください。",
+                    authorTitle: "著者について",
+                    authorContent: "このソフトウェアは現在、私一人によって開発および維持されています。限られた能力を考慮し、広告が氾濫することなく、ユーザーのプライバシーを守り、よく最適化されたアプリケーションを提供することを目指しています。重要な機能に注力し、高いパフォーマンスを維持することが目標です。もしよければ、一緒にこのプロジェクトを改善していくために努力しましょう。",
+                    contactTitle: "お問い合わせとサポート",
+                    contactContent: "問題や提案がありますか？あなたの声を聞かせてください！以下の方法でご連絡いただけます：",
+                    contactList: [
+                        "メール：nanafree@tutamail.com",
+                        "ツイッター：@nana_1574",
+                        "GitHub：github.com/myapp/issues"
+                    ],
+                    contributeContent: "貢献したいですか？私たちのオープンソースコミュニティに参加し、GitHubでHappyDeerをより良くする手助けをしましょう！"
+                },
+            zhyue:{
+                    appTitle: "欢迎使用 HappyDeer",
+                    aboutTitle: "关于",
+                    aboutContent: "HappyDeer 系一款用嚟记录同分析个人「冲」时间嘅应用。用户可以轻松记录每次会话所用嘅时间，并生成统计图去理解佢哋嘅行为模式。这些洞察有助于增强自律，促进更克制嘅生活方式。无论系设定目标定优化生活，HappyDeer 都系你亲密嘅伙伴。",
+                    featuresTitle: "功能与特性",
+                    features: [
+                        "HappyDeer 提供所有功能且完全免费。",
+                        "所有数据都保存在本地，确保隐私。",
+                        "作为一款开源应用，安全使用无问题。",
+                        "持续优化以提升体验。",
+                        "安装包得 14MB，唔占空间。"
+                    ],
+                    ctaTitle: "准备开始吗？",
+                    ctaContent: "今日就来体验 HappyDeer 嘅强大。点击下面嘅按钮下载，开始你嘅高效与成功之旅。",
+                    downloadBtn: "下载最新版本",
+                    securityTitle: "安全声明",
+                    securityContent: "呢个软件系开源软件，采用 GPL-2.0 许可证。虽然我哋努力提供安全可靠嘅代码，但系冇办法保证喺所有环境中绝对安全。用户自行承担使用呢个软件所带来嘅所有风险，我哋唔承担任何责任。请确保采取适当嘅安全措施去保护你嘅系统同数据。",
+                    authorTitle: "关于作者",
+                    authorContent: "呢个软件而家系我个人独立开发同维护。考虑到我能力有限，我一直希望提供一个唔会被广告充斥、保护个人隐私同优化良好嘅应用。我嘅目标系专注于重要功能，同时保持高性能。如果你愿意，我们可以一起努力，共同提升这个项目，让它变得更好。",
+                    contactTitle: "联系与支持",
+                    contactContent: "遇到问题或者有建议吗？我哋好想听到你嘅声音！你可以通过以下方式联络我哋：",
+                    contactList: [
+                        "电子邮件：nanafree@tutamail.com",
+                        "推特：@nana_1574",
+                        "GitHub：github.com/myapp/issues"
+                    ],
+                    contributeContent: "想要贡献？加入我哋嘅开源社区，喺 GitHub 上帮助我哋让 HappyDeer 更加出色！"
+                }
+
+        };
+
+        function updateContent(lang) {
+            document.getElementById('app-title').textContent = translations[lang].appTitle;
+            document.getElementById('about-title').textContent = translations[lang].aboutTitle;
+            document.getElementById('about-content').textContent = translations[lang].aboutContent;
+            document.getElementById('features-title').textContent = translations[lang].featuresTitle;
+            
+            const featuresList = document.getElementById('features-list');
+            featuresList.innerHTML = '';
+            translations[lang].features.forEach((feature, index) => {
+                const li = document.createElement('li');
+                li.className = 'feature';
+                li.style.animationDelay = `${0.2 *
+
+ (index + 1)}s`;
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+
+            document.getElementById('cta-title').textContent = translations[lang].ctaTitle;
+            document.getElementById('cta-content').textContent = translations[lang].ctaContent;
+            document.getElementById('download-btn').textContent = translations[lang].downloadBtn;
+
+            document.getElementById('security-title').textContent = translations[lang].securityTitle;
+            document.getElementById('security-content').textContent = translations[lang].securityContent;
+            document.getElementById('author-title').textContent = translations[lang].authorTitle;
+            document.getElementById('author-content').textContent = translations[lang].authorContent;
+            document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+            document.getElementById('contact-content').textContent = translations[lang].contactContent;
+
+            const contactList = document.getElementById('contact-list');
+            contactList.innerHTML = '';
+            translations[lang].contactList.forEach((contact) => {
+                const li = document.createElement('li');
+                li.textContent = contact;
+                contactList.appendChild(li);
+            });
+
+            document.getElementById('contribute-content').textContent = translations[lang].contributeContent;
+        }
+
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.language-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                updateContent(this.getAttribute('data-lang'));
+            });
+        });
+    </script>
+</body>
+</html>
