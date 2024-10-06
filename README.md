@@ -9,6 +9,17 @@
     <img src="docs_assets/Android.png" alt="Android" width="120px">
     <img src="docs_assets/GitHub.png" alt="Github" width="120px">
     <img src="docs_assets/HTML.png" alt="HTML" width="120px">
+    <img src="docs_assets/React.png" alt="HTML" width="120px">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/XML-005C0F?style=for-the-badge&logo=xml&logoColor=white" alt="XML">
+  <img src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white" alt="Gradle">
+  <img src="https://img.shields.io/badge/Room-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Room">
+  <img src="https://img.shields.io/badge/Retrofit-48B983?style=for-the-badge&logo=square&logoColor=white" alt="Retrofit">
+  <img src="https://img.shields.io/badge/OkHttp-3E4348?style=for-the-badge&logo=square&logoColor=white" alt="OkHttp">
+  <img src="https://img.shields.io/badge/NanoHTTPD-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="NanoHTTPD">
+  <img src="https://img.shields.io/badge/MPAndroidChart-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="MPAndroidChart">
 </p>
 
 <p align="center">
